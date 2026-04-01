@@ -73,8 +73,9 @@ const Footer = () => {
               ))}
             </div>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <a href="mailto:teamstagefright@gmail.com" className="hover:text-maroon-bright transition-colors duration-300">teamstagefright@gmail.com</a>
-              <p>+91 98765 43210</p>
+              <a href="mailto:teamstagefright@gmail.com" className="hover:text-maroon-bright transition-colors duration-300 block">teamstagefright@gmail.com</a>
+              <a href="https://wa.me/919867291626" target="_blank" rel="noopener noreferrer" className="hover:text-maroon-bright transition-colors duration-300 block">+91 98672 91626</a>
+              <a href="https://wa.me/919136663411" target="_blank" rel="noopener noreferrer" className="hover:text-maroon-bright transition-colors duration-300 block">+91 91366 63411</a>
             </div>
           </div>
         </div>
