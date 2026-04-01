@@ -73,7 +73,7 @@ const Footer = () => {
               ))}
             </div>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>booking@stagefright.band</p>
+              <a href="mailto:teamstagefright@gmail.com" className="hover:text-maroon-bright transition-colors duration-300">teamstagefright@gmail.com</a>
               <p>+91 98765 43210</p>
             </div>
           </div>
