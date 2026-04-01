@@ -157,7 +157,7 @@ const Index = () => {
           <p className="text-center text-muted-foreground mt-8 animate-fade-in">
             Follow us on{" "}
             <a
-              href="https://instagram.com/stagefright"
+              href="https://www.instagram.com/stagefr1ght"
               target="_blank"
               rel="noopener noreferrer"
               className="text-maroon-bright hover:text-maroon-neon transition-colors duration-300 font-semibold"
