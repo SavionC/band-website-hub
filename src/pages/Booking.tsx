@@ -15,6 +15,7 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { toast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 
 const bookingSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
@@ -67,14 +68,25 @@ const Booking = () => {
 
     setIsSubmitting(true);
 
-    // Simulate API call - in production, this would send to backend
-    setTimeout(() => {
+    try {
+      const { error } = await supabase.from("bookings").insert({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        event_type: formData.eventType,
+        venue_location: formData.venueLocation,
+        event_date: formData.eventDate,
+        budget: formData.budget,
+        requirements: formData.requirements || null,
+      });
+
+      if (error) throw error;
+
       toast({
         title: "Booking Request Received! 🎸",
         description: "We'll get back to you within 24 hours with a quote and availability.",
       });
 
-      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -85,8 +97,15 @@ const Booking = () => {
         budget: "",
         requirements: "",
       });
+    } catch (error: any) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
