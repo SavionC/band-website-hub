@@ -15,6 +15,7 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { toast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 
 const bookingSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
