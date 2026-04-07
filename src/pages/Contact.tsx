@@ -5,18 +5,18 @@ import Footer from "@/components/layout/Footer";
 
 const Contact = () => {
   const contactInfo = [
-     {
-    icon: Mail,
-    label: "Email",
-    value: "teamstagefright@gmail.com",
-    link: "mailto:teamstagefright@gmail.com?subject=Booking Inquiry&body=Hi, I want to book your band!",
-    color: "text-maroon-bright",
-  },
+    {
+      icon: Mail,
+      label: "Email",
+      value: "teamstagefright@gmail.com",
+      link: "mailto:teamstagefright@gmail.com?subject=Booking Inquiry&body=Hi, I want to book your band!",
+      color: "text-maroon-bright",
+    },
     {
       icon: Phone,
       label: "Phone",
       value: "+91 98672 91626",
-      link: "tel:+919867291626",
+      link: "https://wa.me/919867291626", // WhatsApp link
       color: "text-maroon-bright",
     },
     {
@@ -74,33 +74,39 @@ const Contact = () => {
           <h2 className="font-display text-4xl md:text-5xl font-bold text-gradient-maroon mb-12 text-center animate-fade-in">
             Contact Information
           </h2>
+
           <div className="grid md:grid-cols-3 gap-6">
-            {contactInfo.map((info, index) => (
-              <Card
-                key={info.label}
-                className="bg-card border-maroon-bright/30 hover:border-maroon-bright p-8 text-center group transition-all duration-500 animate-fade-in glow-border-maroon"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="space-y-4">
-                  <div className="flex justify-center">
-                    <info.icon className={`h-12 w-12 ${info.color} group-hover:scale-110 transition-transform duration-300`} />
-                  </div>
-                  <h3 className="font-heading text-xl font-bold text-foreground">
-                    {info.label}
-                  </h3>
-                  {info.link ? (
-                    <a
-                      href={info.link}
-                      className="text-muted-foreground hover:text-maroon-bright transition-colors duration-300 block"
-                    >
-                      {info.value}
-                    </a>
-                  ) : (
+            {contactInfo.map((info, index) => {
+              const CardContent = (
+                <Card
+                  className="bg-card border-maroon-bright/30 hover:border-maroon-bright p-8 text-center group transition-all duration-500 animate-fade-in glow-border-maroon cursor-pointer"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="space-y-4">
+                    <div className="flex justify-center">
+                      <info.icon className={`h-12 w-12 ${info.color} group-hover:scale-110 transition-transform duration-300`} />
+                    </div>
+                    <h3 className="font-heading text-xl font-bold text-foreground">
+                      {info.label}
+                    </h3>
                     <p className="text-muted-foreground">{info.value}</p>
-                  )}
-                </div>
-              </Card>
-            ))}
+                  </div>
+                </Card>
+              );
+
+              return info.link ? (
+                <a
+                  key={info.label}
+                  href={info.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {CardContent}
+                </a>
+              ) : (
+                <div key={info.label}>{CardContent}</div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -111,6 +117,7 @@ const Contact = () => {
           <h2 className="font-display text-4xl md:text-5xl font-bold text-gradient-maroon mb-12 text-center animate-fade-in">
             Follow Us
           </h2>
+
           <div className="grid md:grid-cols-3 gap-6">
             {socialMedia.map((social, index) => (
               <a
@@ -137,58 +144,6 @@ const Contact = () => {
               </a>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Business Hours Section */}
-      <section className="section-padding bg-secondary/30 pattern-overlay">
-        <div className="container-custom max-w-3xl">
-          <Card className="bg-card border-maroon-bright/50 p-8 md:p-12 text-center glow-border-maroon animate-fade-in">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-gradient-maroon mb-6">
-              Business Hours
-            </h2>
-            <div className="space-y-4 text-lg">
-              <div className="flex justify-between max-w-md mx-auto">
-                <span className="text-muted-foreground">Monday - Friday</span>
-                <span className="text-foreground font-semibold">10:00 AM - 8:00 PM</span>
-              </div>
-              <div className="flex justify-between max-w-md mx-auto">
-                <span className="text-muted-foreground">Saturday</span>
-                <span className="text-foreground font-semibold">11:00 AM - 6:00 PM</span>
-              </div>
-              <div className="flex justify-between max-w-md mx-auto">
-                <span className="text-muted-foreground">Sunday</span>
-                <span className="text-foreground font-semibold">Closed</span>
-              </div>
-            </div>
-            <p className="mt-8 text-muted-foreground">
-              For urgent bookings or inquiries outside business hours, please call or
-              WhatsApp us at{" "}
-              <a
-                href="tel:+919876543210"
-                className="text-maroon-bright hover:text-maroon-neon font-semibold transition-colors duration-300"
-              >
-                +91 98765 43210
-              </a>
-            </p>
-          </Card>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section-padding relative">
-        <div className="container-custom text-center">
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-gradient-maroon mb-6 animate-fade-in">
-            Ready to Book?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in">
-            Fill out our booking form and we'll get back to you within 24 hours
-          </p>
-          <a href="/booking" className="inline-block">
-            <button className="px-8 py-4 bg-gradient-to-r from-maroon-bright to-maroon-neon hover:from-maroon-neon hover:to-maroon-bright text-white font-semibold text-lg rounded-lg shadow-[0_0_30px_hsl(var(--maroon-bright)/0.6)] hover:shadow-[0_0_40px_hsl(var(--maroon-bright)/0.8)] transition-all duration-300 animate-fade-in">
-              Book Stage Fright
-            </button>
-          </a>
         </div>
       </section>
 
