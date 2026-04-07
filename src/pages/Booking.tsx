@@ -82,6 +82,21 @@ const Booking = () => {
 
       if (error) throw error;
 
+      // Send notification email to the band
+      await supabase.functions.invoke("notify-band", {
+        body: {
+          type: "booking",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          eventType: formData.eventType,
+          venueLocation: formData.venueLocation,
+          eventDate: formData.eventDate,
+          budget: formData.budget,
+          requirements: formData.requirements,
+        },
+      });
+
       toast({
         title: "Booking Request Received! 🎸",
         description: "We'll get back to you within 24 hours with a quote and availability.",
@@ -303,19 +318,21 @@ const Booking = () => {
             <p className="text-muted-foreground text-lg">
               Prefer to call? Reach us at{" "}
               <a
-                href="tel:+919876543210"
+                href="https://wa.me/919867291626"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-maroon-bright hover:text-maroon-neon font-semibold transition-colors duration-300"
               >
-                +91 98765 43210
+                +91 98672 91626
               </a>
             </p>
             <p className="text-muted-foreground">
               Or email us at{" "}
               <a
-                href="mailto:booking@stagefright.band"
+                href="mailto:teamstagefright@gmail.com"
                 className="text-maroon-bright hover:text-maroon-neon font-semibold transition-colors duration-300"
               >
-                booking@stagefright.band
+                teamstagefright@gmail.com
               </a>
             </p>
           </div>
