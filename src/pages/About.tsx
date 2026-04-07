@@ -76,27 +76,19 @@ const About = () => {
         <div className="container-custom max-w-4xl">
           <div className="space-y-6 text-lg text-muted-foreground leading-relaxed animate-fade-in">
             <p>
-              Stage Fright is not just a band—it's an experience. Born in the vibrant
-              music scene of Mumbai, we've dedicated ourselves to bringing the raw energy
-              of live performance to every stage we touch.
+              Stage Fright is a boundary-pushing collective of young musicians united by a shared love for experimentation and sound. Blending influences across genres, from rock, pop and r&b to bollywood, electronic, and beyond, the band crafts a dynamic fusion that refuses to sit still or be boxed in.
             </p>
             <p>
-              Our journey began with a shared passion for music that transcends genres.
-              From rock anthems to soulful ballads, from Bollywood hits to international
-              chart-toppers, we believe that great music knows no boundaries. This
-              philosophy drives us to constantly evolve, experiment, and push the limits
-              of live performance.
+              The band’s story began in 2024, when a group of like-minded musicians came together simply to play, with no pressure and no expectations, just a shared passion for music. What started as casual jam sessions quickly turned into something more. As they spent more time creating together, they realized there was a unique chemistry between them, something with real potential. What was once a hobby soon became a commitment, and Stage Fright was officially born.
             </p>
             <p>
-              What sets us apart is our ability to read the room and deliver exactly what
-              the moment needs. Whether it's a high-energy corporate event, an intimate
-              wedding celebration, or a massive concert, we bring the same level of
-              professionalism, energy, and musical excellence.
+              Their first single, Game Night, came together almost by accident, an unplanned spark that revealed just how naturally they could create as a unit. That moment became a turning point, inspiring them to dive deeper into original music and begin shaping their sound with intention. Since then, they have been building a catalogue that reflects not just their influences, but their identity as a band.
             </p>
             <p>
-              With years of collective experience and hundreds of successful performances,
-              Stage Fright has become one of Mumbai's most sought-after live bands. We
-              don't just play music—we create memories that last a lifetime.
+              More than just collaborators, Stage Fright are a group of young musicians who found a sense of family in each other. That connection lies at the heart of everything they create. Their music is honest, energetic, and deeply personal, an extension of who they are and what they stand for.
+            </p>
+            <p>
+              With an EP on the way, Stage Fright is not just making music, they are carving out a voice. A voice for their generation, for youth navigating change, identity, and expression. Through their sound, they hope to share not just songs, but a feeling, something real, something relatable, and something that brings people together.
             </p>
           </div>
         </div>
