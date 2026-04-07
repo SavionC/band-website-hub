@@ -15,7 +15,7 @@ const About = () => {
       name: "Om Deshmukh",
       role: "Vocalist",
       bio: "Dynamic vocalist with incredible range. Om captivates audiences with his powerful and emotive performances.",
-      instagram: "https://www.instagram.com/omsmusicdiary",
+      instagram: "https://www.instagram.com/omsmusicdiaries",
     },
     {
       name: "Rickson Castelino",
