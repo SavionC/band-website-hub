@@ -48,7 +48,7 @@ const About = () => {
             About Stage Fright
           </h1>
           <p className="text-xl md:text-2xl text-center text-muted-foreground max-w-3xl mx-auto animate-fade-in">
-            Mumbai's Premier Multi-Genre Live Band
+            Mumbai's Multi-Genre Fusion Band
           </p>
         </div>
       </section>
