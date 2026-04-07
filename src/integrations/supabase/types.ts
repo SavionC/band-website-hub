@@ -25,6 +25,7 @@ export type Database = {
           name: string
           phone: string
           requirements: string | null
+          status: string
           venue_location: string
         }
         Insert: {
@@ -37,6 +38,7 @@ export type Database = {
           name: string
           phone: string
           requirements?: string | null
+          status?: string
           venue_location: string
         }
         Update: {
@@ -49,7 +51,35 @@ export type Database = {
           name?: string
           phone?: string
           requirements?: string | null
+          status?: string
           venue_location?: string
+        }
+        Relationships: []
+      }
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
         }
         Relationships: []
       }
