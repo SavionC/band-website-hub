@@ -5,18 +5,18 @@ import Footer from "@/components/layout/Footer";
 
 const Contact = () => {
   const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "booking@stagefright.band",
-      link: "mailto:booking@stagefright.band",
-      color: "text-maroon-bright",
-    },
+     {
+    icon: Mail,
+    label: "Email",
+    value: "teamstagefright@gmail.com",
+    link: "mailto:teamstagefright@gmail.com?subject=Booking Inquiry&body=Hi, I want to book your band!",
+    color: "text-maroon-bright",
+  },
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 98765 43210",
-      link: "tel:+919876543210",
+      value: "+91 98672 91626",
+      link: "tel:+919867291626",
       color: "text-maroon-bright",
     },
     {
