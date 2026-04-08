@@ -69,7 +69,8 @@ const Booking = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("bookings").insert({
+      // Save to database
+      const { error: dbError } = await supabase.from("bookings").insert({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -80,12 +81,17 @@ const Booking = () => {
         requirements: formData.requirements || null,
       });
 
-      if (error) throw error;
+      if (dbError) {
+        console.error("Database insert error:", dbError);
+      }
 
-      // Send notification email via Formspree
-      await fetch("https://formspree.io/f/xgopqzwn", {
+      // Send notification email via Formspree (always attempt even if DB fails)
+      const formspreeRes = await fetch("https://formspree.io/f/xgopqzwn", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
         body: JSON.stringify({
           _subject: `🎸 New Booking Request from ${formData.name}`,
           name: formData.name,
@@ -98,6 +104,15 @@ const Booking = () => {
           requirements: formData.requirements,
         }),
       });
+
+      if (!formspreeRes.ok) {
+        const errBody = await formspreeRes.text();
+        console.error("Formspree error:", formspreeRes.status, errBody);
+      }
+
+      if (dbError) {
+        throw dbError;
+      }
 
       toast({
         title: "Booking Request Received! 🎸",
@@ -115,9 +130,10 @@ const Booking = () => {
         requirements: "",
       });
     } catch (error: any) {
+      console.error("Booking submission error:", error);
       toast({
         title: "Something went wrong",
-        description: "Please try again or contact us directly.",
+        description: error?.message || "Please try again or contact us directly.",
         variant: "destructive",
       });
     } finally {
@@ -308,7 +324,7 @@ const Booking = () => {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="w-full text-lg py-6 bg-gradient-to-r from-maroon-bright to-maroon-neon hover:from-maroon-neon hover:to-maroon-bright text-white font-semibold shadow-[0_0_30px_hsl(var(--maroon-bright)/0.6)] hover:shadow-[0_0_40px_hsl(var(--maroon-bright)/0.8)] transition-all duration-300"
+                className="w-full text-lg py-6 bg-gradient-to-r from-maroon-bright to-maroon-neon hover:from-maroon-neon hover:to-maroon-bright text-foreground font-semibold shadow-[0_0_30px_hsl(var(--maroon-bright)/0.6)] hover:shadow-[0_0_40px_hsl(var(--maroon-bright)/0.8)] transition-all duration-300"
               >
                 {isSubmitting ? "Submitting..." : "Submit Booking Request"}
               </Button>

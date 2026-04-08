@@ -40,20 +40,25 @@ const Contact = () => {
 
     setIsSubmitting(true);
     try {
-      const id = crypto.randomUUID();
-      const { error } = await supabase.from("contact_submissions").insert({
-        id,
+      // Save to database
+      const { error: dbError } = await supabase.from("contact_submissions").insert({
         name: formData.name,
         email: formData.email,
         phone: formData.phone || null,
         message: formData.message,
       });
-      if (error) throw error;
 
-      // Send notification email via Formspree
-      await fetch("https://formspree.io/f/xgopqzwn", {
+      if (dbError) {
+        console.error("Database insert error:", dbError);
+      }
+
+      // Send notification email via Formspree (always attempt even if DB fails)
+      const formspreeRes = await fetch("https://formspree.io/f/xgopqzwn", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
         body: JSON.stringify({
           _subject: `📩 New Contact Message from ${formData.name}`,
           name: formData.name,
@@ -63,13 +68,23 @@ const Contact = () => {
         }),
       });
 
+      if (!formspreeRes.ok) {
+        const errBody = await formspreeRes.text();
+        console.error("Formspree error:", formspreeRes.status, errBody);
+      }
+
+      if (dbError) {
+        throw dbError;
+      }
+
       toast({
         title: "Message Sent! 🎶",
         description: "We'll get back to you as soon as possible.",
       });
       setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error: any) {
-      toast({ title: "Something went wrong", description: "Please try again or email us directly.", variant: "destructive" });
+      console.error("Contact submission error:", error);
+      toast({ title: "Something went wrong", description: error?.message || "Please try again or email us directly.", variant: "destructive" });
     } finally {
       setIsSubmitting(false);
     }
