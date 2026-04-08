@@ -50,15 +50,17 @@ const Contact = () => {
       });
       if (error) throw error;
 
-      // Send notification email to the band
-      await supabase.functions.invoke("notify-band", {
-        body: {
-          type: "contact",
+      // Send notification email via Formspree
+      await fetch("https://formspree.io/f/xgopqzwn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          _subject: `📩 New Contact Message from ${formData.name}`,
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
+          phone: formData.phone || "",
           message: formData.message,
-        },
+        }),
       });
 
       toast({

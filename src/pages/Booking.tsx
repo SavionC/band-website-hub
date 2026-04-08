@@ -82,10 +82,12 @@ const Booking = () => {
 
       if (error) throw error;
 
-      // Send notification email to the band
-      await supabase.functions.invoke("notify-band", {
-        body: {
-          type: "booking",
+      // Send notification email via Formspree
+      await fetch("https://formspree.io/f/xgopqzwn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          _subject: `🎸 New Booking Request from ${formData.name}`,
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
@@ -94,7 +96,7 @@ const Booking = () => {
           eventDate: formData.eventDate,
           budget: formData.budget,
           requirements: formData.requirements,
-        },
+        }),
       });
 
       toast({
