@@ -324,7 +324,7 @@ const Booking = () => {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="w-full text-lg py-6 bg-gradient-to-r from-maroon-bright to-maroon-neon hover:from-maroon-neon hover:to-maroon-bright text-white font-semibold shadow-[0_0_30px_hsl(var(--maroon-bright)/0.6)] hover:shadow-[0_0_40px_hsl(var(--maroon-bright)/0.8)] transition-all duration-300"
+                className="w-full text-lg py-6 bg-gradient-to-r from-maroon-bright to-maroon-neon hover:from-maroon-neon hover:to-maroon-bright text-foreground font-semibold shadow-[0_0_30px_hsl(var(--maroon-bright)/0.6)] hover:shadow-[0_0_40px_hsl(var(--maroon-bright)/0.8)] transition-all duration-300"
               >
                 {isSubmitting ? "Submitting..." : "Submit Booking Request"}
               </Button>
