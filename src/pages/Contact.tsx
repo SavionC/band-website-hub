@@ -52,25 +52,19 @@ const Contact = () => {
         console.error("Database insert error:", dbError);
       }
 
-      // Send notification email via Formspree (always attempt even if DB fails)
-      const formspreeRes = await fetch("https://formspree.io/f/xgopqzwn", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `📩 New Contact Message from ${formData.name}`,
+      // Send notification email via Supabase function
+      const { data: emailData, error: emailError } = await supabase.functions.invoke('notify-band', {
+        body: {
+          type: 'contact',
           name: formData.name,
           email: formData.email,
           phone: formData.phone || "",
           message: formData.message,
-        }),
+        },
       });
 
-      if (!formspreeRes.ok) {
-        const errBody = await formspreeRes.text();
-        console.error("Formspree error:", formspreeRes.status, errBody);
+      if (emailError) {
+        console.error("Email notification error:", emailError);
       }
 
       if (dbError) {

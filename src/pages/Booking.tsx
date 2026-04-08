@@ -86,7 +86,7 @@ const Booking = () => {
       }
 
       // Send notification email via Formspree (always attempt even if DB fails)
-      const formspreeRes = await fetch("https://formspree.io/f/xgopqzwn", {
+      const formspreeRes = await fetch("https://formspree.io/f/xjgpzebj", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
