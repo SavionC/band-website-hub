@@ -5,6 +5,7 @@ import { Calendar, MapPin, Music } from "lucide-react";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import MailingListPopup from "@/components/MailingListPopup";
+import ParticlesBackground from "@/components/ParticlesBackground";
 import heroImage from "@/assets/hero-stage-fright.jpg";
 
 const Index = () => {
@@ -43,6 +44,9 @@ const Index = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         </div>
+
+        {/* Animated particles */}
+        <ParticlesBackground />
 
         {/* Animated pattern overlay */}
         <div className="absolute inset-0 pattern-overlay opacity-30" />
