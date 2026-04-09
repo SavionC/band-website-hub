@@ -5,6 +5,7 @@ import { Calendar, MapPin, Music } from "lucide-react";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import MailingListPopup from "@/components/MailingListPopup";
+import ParticlesBackground from "@/components/ParticlesBackground";
 import heroImage from "@/assets/hero-stage-fright.jpg";
 
 const Index = () => {
