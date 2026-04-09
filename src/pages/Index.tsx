@@ -45,6 +45,9 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         </div>
 
+        {/* Animated particles */}
+        <ParticlesBackground />
+
         {/* Animated pattern overlay */}
         <div className="absolute inset-0 pattern-overlay opacity-30" />
 
