@@ -1,28 +1,19 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
-const CELL_SIZE = 20;
-const COLS = 20;
-const ROWS = 15;
-const INITIAL_SPEED = 150;
-
 type Direction = "UP" | "DOWN" | "LEFT" | "RIGHT";
 type Cell = { x: number; y: number };
 
-// Simple maze walls
-const MAZE_WALLS: Cell[] = [
-  // Top horizontal bar
-  ...Array.from({ length: 6 }, (_, i) => ({ x: 3 + i, y: 3 })),
-  // Bottom horizontal bar
-  ...Array.from({ length: 6 }, (_, i) => ({ x: 11 + i, y: 11 })),
-  // Left vertical bar
-  ...Array.from({ length: 5 }, (_, i) => ({ x: 5, y: 6 + i })),
-  // Right vertical bar
-  ...Array.from({ length: 5 }, (_, i) => ({ x: 14, y: 3 + i })),
-  // Center block
-  { x: 9, y: 7 }, { x: 10, y: 7 }, { x: 9, y: 8 }, { x: 10, y: 8 },
-];
+const COLS = 15;
+const ROWS = 12;
+const INITIAL_SPEED = 180;
+const NOTES_TO_COLLECT = 5;
 
-const NOTES_TO_COLLECT = 8;
+// Simpler maze - just a few small obstacles
+const MAZE_WALLS: Cell[] = [
+  ...Array.from({ length: 3 }, (_, i) => ({ x: 4 + i, y: 3 })),
+  ...Array.from({ length: 3 }, (_, i) => ({ x: 9 + i, y: 8 })),
+  { x: 7, y: 5 }, { x: 7, y: 6 },
+];
 
 interface SnakeMazeGameProps {
   onWin: (timeSeconds: number) => void;
@@ -30,6 +21,7 @@ interface SnakeMazeGameProps {
 
 const SnakeMazeGame = ({ onWin }: SnakeMazeGameProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [snake, setSnake] = useState<Cell[]>([{ x: 1, y: 1 }]);
   const [direction, setDirection] = useState<Direction>("RIGHT");
   const [notes, setNotes] = useState<Cell[]>([]);
@@ -37,9 +29,21 @@ const SnakeMazeGame = ({ onWin }: SnakeMazeGameProps) => {
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
   const [timer, setTimer] = useState(0);
+  const [cellSize, setCellSize] = useState(20);
   const dirRef = useRef<Direction>("RIGHT");
   const gameLoopRef = useRef<number | null>(null);
   const timerRef = useRef<number | null>(null);
+
+  // Responsive cell size
+  useEffect(() => {
+    const updateSize = () => {
+      const maxW = Math.min(window.innerWidth - 40, 400);
+      setCellSize(Math.floor(maxW / COLS));
+    };
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
   const isWall = useCallback((x: number, y: number) => {
     return MAZE_WALLS.some((w) => w.x === x && w.y === y);
@@ -50,11 +54,7 @@ const SnakeMazeGame = ({ onWin }: SnakeMazeGameProps) => {
     while (newNotes.length < NOTES_TO_COLLECT) {
       const x = Math.floor(Math.random() * COLS);
       const y = Math.floor(Math.random() * ROWS);
-      if (
-        !isWall(x, y) &&
-        !(x === 1 && y === 1) &&
-        !newNotes.some((n) => n.x === x && n.y === y)
-      ) {
+      if (!isWall(x, y) && !(x <= 2 && y <= 2) && !newNotes.some((n) => n.x === x && n.y === y)) {
         newNotes.push({ x, y });
       }
     }
@@ -86,10 +86,18 @@ const SnakeMazeGame = ({ onWin }: SnakeMazeGameProps) => {
     }, 100);
   }, [gameStarted]);
 
+  const changeDir = useCallback((newDir: Direction) => {
+    if (!gameStarted && !gameOver) startGame();
+    const opposites: Record<Direction, Direction> = { UP: "DOWN", DOWN: "UP", LEFT: "RIGHT", RIGHT: "LEFT" };
+    if (dirRef.current !== opposites[newDir]) {
+      dirRef.current = newDir;
+      setDirection(newDir);
+    }
+  }, [gameStarted, gameOver, startGame]);
+
   // Game loop
   useEffect(() => {
     if (!gameStarted || gameOver) return;
-
     gameLoopRef.current = window.setInterval(() => {
       setSnake((prev) => {
         const head = { ...prev[0] };
@@ -99,14 +107,11 @@ const SnakeMazeGame = ({ onWin }: SnakeMazeGameProps) => {
         if (dir === "LEFT") head.x -= 1;
         if (dir === "RIGHT") head.x += 1;
 
-        // Wall collision or boundary
         if (head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS || isWall(head.x, head.y)) {
           setGameOver(true);
           if (timerRef.current) clearInterval(timerRef.current);
           return prev;
         }
-
-        // Self collision
         if (prev.some((s) => s.x === head.x && s.y === head.y)) {
           setGameOver(true);
           if (timerRef.current) clearInterval(timerRef.current);
@@ -114,8 +119,6 @@ const SnakeMazeGame = ({ onWin }: SnakeMazeGameProps) => {
         }
 
         const newSnake = [head, ...prev];
-
-        // Check note collection
         setNotes((prevNotes) => {
           const idx = prevNotes.findIndex((n) => n.x === head.x && n.y === head.y);
           if (idx !== -1) {
@@ -124,55 +127,52 @@ const SnakeMazeGame = ({ onWin }: SnakeMazeGameProps) => {
               if (newC >= NOTES_TO_COLLECT) {
                 setGameOver(true);
                 if (timerRef.current) clearInterval(timerRef.current);
-                setTimer((t) => {
-                  onWin(Math.round(t * 10) / 10);
-                  return t;
-                });
+                setTimer((t) => { onWin(Math.round(t * 10) / 10); return t; });
               }
               return newC;
             });
             return prevNotes.filter((_, i) => i !== idx);
           }
-          // Remove tail if no note collected
           newSnake.pop();
           return prevNotes;
         });
-
         return newSnake;
       });
     }, INITIAL_SPEED);
-
-    return () => {
-      if (gameLoopRef.current) clearInterval(gameLoopRef.current);
-    };
+    return () => { if (gameLoopRef.current) clearInterval(gameLoopRef.current); };
   }, [gameStarted, gameOver, isWall, onWin]);
 
-  // Keyboard controls
+  // Keyboard
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (!gameStarted && !gameOver) startGame();
-      const key = e.key;
-      if ((key === "ArrowUp" || key === "w") && dirRef.current !== "DOWN") {
-        dirRef.current = "UP";
-        setDirection("UP");
-      }
-      if ((key === "ArrowDown" || key === "s") && dirRef.current !== "UP") {
-        dirRef.current = "DOWN";
-        setDirection("DOWN");
-      }
-      if ((key === "ArrowLeft" || key === "a") && dirRef.current !== "RIGHT") {
-        dirRef.current = "LEFT";
-        setDirection("LEFT");
-      }
-      if ((key === "ArrowRight" || key === "d") && dirRef.current !== "LEFT") {
-        dirRef.current = "RIGHT";
-        setDirection("RIGHT");
-      }
-      e.preventDefault();
+      const map: Record<string, Direction> = {
+        ArrowUp: "UP", w: "UP", ArrowDown: "DOWN", s: "DOWN",
+        ArrowLeft: "LEFT", a: "LEFT", ArrowRight: "RIGHT", d: "RIGHT",
+      };
+      const dir = map[e.key];
+      if (dir) { changeDir(dir); e.preventDefault(); }
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [gameStarted, gameOver, startGame]);
+  }, [changeDir]);
+
+  // Swipe support
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    let startX = 0, startY = 0;
+    const onStart = (e: TouchEvent) => { startX = e.touches[0].clientX; startY = e.touches[0].clientY; };
+    const onEnd = (e: TouchEvent) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) < 20 && Math.abs(dy) < 20) return;
+      if (Math.abs(dx) > Math.abs(dy)) changeDir(dx > 0 ? "RIGHT" : "LEFT");
+      else changeDir(dy > 0 ? "DOWN" : "UP");
+    };
+    el.addEventListener("touchstart", onStart, { passive: true });
+    el.addEventListener("touchend", onEnd, { passive: true });
+    return () => { el.removeEventListener("touchstart", onStart); el.removeEventListener("touchend", onEnd); };
+  }, [changeDir]);
 
   // Draw
   useEffect(() => {
@@ -180,127 +180,91 @@ const SnakeMazeGame = ({ onWin }: SnakeMazeGameProps) => {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    const w = COLS * cellSize;
+    const h = ROWS * cellSize;
+    canvas.width = w;
+    canvas.height = h;
 
-    const w = COLS * CELL_SIZE;
-    const h = ROWS * CELL_SIZE;
-
-    // Background
     ctx.fillStyle = "#0a0a0a";
     ctx.fillRect(0, 0, w, h);
 
-    // Grid lines
     ctx.strokeStyle = "#1a1a2e";
     ctx.lineWidth = 0.5;
-    for (let x = 0; x < COLS; x++) {
-      for (let y = 0; y < ROWS; y++) {
-        ctx.strokeRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-      }
-    }
+    for (let x = 0; x < COLS; x++) for (let y = 0; y < ROWS; y++) ctx.strokeRect(x * cellSize, y * cellSize, cellSize, cellSize);
 
-    // Walls
     MAZE_WALLS.forEach((wall) => {
       ctx.fillStyle = "#4a1942";
-      ctx.fillRect(wall.x * CELL_SIZE, wall.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+      ctx.fillRect(wall.x * cellSize, wall.y * cellSize, cellSize, cellSize);
       ctx.strokeStyle = "#8b2252";
       ctx.lineWidth = 1;
-      ctx.strokeRect(wall.x * CELL_SIZE, wall.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+      ctx.strokeRect(wall.x * cellSize, wall.y * cellSize, cellSize, cellSize);
     });
 
-    // Notes (musical notes as collectibles)
     notes.forEach((note) => {
       ctx.fillStyle = "#ffd700";
-      ctx.font = `${CELL_SIZE - 4}px monospace`;
+      ctx.font = `${cellSize - 4}px monospace`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText("♪", note.x * CELL_SIZE + CELL_SIZE / 2, note.y * CELL_SIZE + CELL_SIZE / 2);
+      ctx.fillText("♪", note.x * cellSize + cellSize / 2, note.y * cellSize + cellSize / 2);
     });
 
-    // Snake
     snake.forEach((seg, i) => {
       const isHead = i === 0;
       ctx.fillStyle = isHead ? "#ff4488" : "#cc3366";
-      ctx.fillRect(
-        seg.x * CELL_SIZE + 1,
-        seg.y * CELL_SIZE + 1,
-        CELL_SIZE - 2,
-        CELL_SIZE - 2
-      );
+      ctx.fillRect(seg.x * cellSize + 1, seg.y * cellSize + 1, cellSize - 2, cellSize - 2);
       if (isHead) {
         ctx.shadowColor = "#ff4488";
         ctx.shadowBlur = 8;
-        ctx.fillRect(
-          seg.x * CELL_SIZE + 1,
-          seg.y * CELL_SIZE + 1,
-          CELL_SIZE - 2,
-          CELL_SIZE - 2
-        );
+        ctx.fillRect(seg.x * cellSize + 1, seg.y * cellSize + 1, cellSize - 2, cellSize - 2);
         ctx.shadowBlur = 0;
       }
     });
 
-    // Start overlay
     if (!gameStarted && !gameOver) {
       ctx.fillStyle = "rgba(0,0,0,0.7)";
       ctx.fillRect(0, 0, w, h);
       ctx.fillStyle = "#ff4488";
-      ctx.font = "bold 16px 'Press Start 2P', monospace";
+      ctx.font = `bold ${Math.max(12, cellSize * 0.7)}px monospace`;
       ctx.textAlign = "center";
-      ctx.fillText("Press any arrow key", w / 2, h / 2 - 10);
-      ctx.fillText("to start!", w / 2, h / 2 + 15);
+      ctx.fillText("Tap or press arrow keys", w / 2, h / 2 - 8);
+      ctx.fillText("to start!", w / 2, h / 2 + 16);
     }
 
-    // Game over overlay
     if (gameOver && collected < NOTES_TO_COLLECT) {
       ctx.fillStyle = "rgba(0,0,0,0.7)";
       ctx.fillRect(0, 0, w, h);
       ctx.fillStyle = "#ff4444";
-      ctx.font = "bold 18px 'Press Start 2P', monospace";
+      ctx.font = `bold ${Math.max(14, cellSize * 0.8)}px monospace`;
       ctx.textAlign = "center";
-      ctx.fillText("GAME OVER", w / 2, h / 2 - 10);
+      ctx.fillText("GAME OVER", w / 2, h / 2 - 8);
       ctx.fillStyle = "#aaa";
-      ctx.font = "12px monospace";
-      ctx.fillText("Click 'Try Again' below", w / 2, h / 2 + 20);
+      ctx.font = `${Math.max(10, cellSize * 0.5)}px monospace`;
+      ctx.fillText("Tap 'Try Again' below", w / 2, h / 2 + 16);
     }
-  }, [snake, notes, gameOver, gameStarted, collected, direction]);
+  }, [snake, notes, gameOver, gameStarted, collected, direction, cellSize]);
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div ref={containerRef} className="flex flex-col items-center gap-2 touch-none select-none">
       <div className="flex justify-between w-full text-xs font-mono px-1">
         <span className="text-maroon-bright">♪ {collected}/{NOTES_TO_COLLECT}</span>
         <span className="text-muted-foreground">⏱ {timer.toFixed(1)}s</span>
       </div>
       <canvas
         ref={canvasRef}
-        width={COLS * CELL_SIZE}
-        height={ROWS * CELL_SIZE}
         className="border border-maroon-bright/50 rounded"
+        style={{ width: COLS * cellSize, height: ROWS * cellSize }}
       />
-      {/* Mobile controls */}
-      <div className="grid grid-cols-3 gap-1 md:hidden">
+      {/* D-pad controls - always visible on touch devices */}
+      <div className="grid grid-cols-3 gap-1.5 sm:hidden mt-1">
         <div />
-        <button
-          onClick={() => { if (!gameStarted) startGame(); if (dirRef.current !== "DOWN") { dirRef.current = "UP"; setDirection("UP"); } }}
-          className="bg-secondary text-foreground rounded p-2 text-lg font-bold active:bg-maroon-bright"
-        >▲</button>
+        <button onTouchStart={(e) => { e.preventDefault(); changeDir("UP"); }} className="bg-secondary text-foreground rounded-lg p-3 text-xl font-bold active:bg-maroon-bright select-none">▲</button>
         <div />
-        <button
-          onClick={() => { if (!gameStarted) startGame(); if (dirRef.current !== "RIGHT") { dirRef.current = "LEFT"; setDirection("LEFT"); } }}
-          className="bg-secondary text-foreground rounded p-2 text-lg font-bold active:bg-maroon-bright"
-        >◄</button>
-        <button
-          onClick={() => { if (!gameStarted) startGame(); if (dirRef.current !== "UP") { dirRef.current = "DOWN"; setDirection("DOWN"); } }}
-          className="bg-secondary text-foreground rounded p-2 text-lg font-bold active:bg-maroon-bright"
-        >▼</button>
-        <button
-          onClick={() => { if (!gameStarted) startGame(); if (dirRef.current !== "LEFT") { dirRef.current = "RIGHT"; setDirection("RIGHT"); } }}
-          className="bg-secondary text-foreground rounded p-2 text-lg font-bold active:bg-maroon-bright"
-        >►</button>
+        <button onTouchStart={(e) => { e.preventDefault(); changeDir("LEFT"); }} className="bg-secondary text-foreground rounded-lg p-3 text-xl font-bold active:bg-maroon-bright select-none">◄</button>
+        <button onTouchStart={(e) => { e.preventDefault(); changeDir("DOWN"); }} className="bg-secondary text-foreground rounded-lg p-3 text-xl font-bold active:bg-maroon-bright select-none">▼</button>
+        <button onTouchStart={(e) => { e.preventDefault(); changeDir("RIGHT"); }} className="bg-secondary text-foreground rounded-lg p-3 text-xl font-bold active:bg-maroon-bright select-none">►</button>
       </div>
       {gameOver && collected < NOTES_TO_COLLECT && (
-        <button
-          onClick={resetGame}
-          className="bg-maroon-bright text-foreground px-4 py-2 rounded font-mono text-sm hover:bg-maroon-neon transition-colors"
-        >
+        <button onClick={resetGame} className="bg-maroon-bright text-foreground px-4 py-2 rounded font-mono text-sm hover:bg-maroon-neon transition-colors">
           Try Again
         </button>
       )}

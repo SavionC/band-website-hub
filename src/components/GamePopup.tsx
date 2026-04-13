@@ -168,7 +168,7 @@ const GamePopup = () => {
             <div className="bg-secondary/50 border border-maroon-bright/30 rounded-lg p-4 space-y-2">
               <p className="text-xs text-muted-foreground uppercase tracking-wider">🔑 Your Clue</p>
               <p className="font-display text-3xl font-bold text-maroon-bright tracking-widest">
-                GAME &amp; NIGHT
+                ARCADE
               </p>
               <p className="text-xs text-muted-foreground italic">
                 Can you guess the song name? 🤔
