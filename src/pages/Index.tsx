@@ -5,6 +5,7 @@ import { Calendar, MapPin, Music } from "lucide-react";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import MailingListPopup from "@/components/MailingListPopup";
+import GamePopup from "@/components/GamePopup";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import heroImage from "@/assets/hero-stage-fright.jpg";
 
@@ -34,6 +35,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <MailingListPopup />
+      <GamePopup />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
