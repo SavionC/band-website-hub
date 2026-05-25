@@ -14,9 +14,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        'display': ['Cinzel', 'serif'],
-        'heading': ['Playfair Display', 'serif'],
+        'display': ['"Press Start 2P"', 'monospace'],
+        'heading': ['Orbitron', 'sans-serif'],
         'sans': ['Poppins', 'sans-serif'],
+        'arcade': ['"Press Start 2P"', 'monospace'],
+        'retro': ['VT323', 'monospace'],
       },
       colors: {
         'maroon-deep': 'hsl(var(--maroon-deep))',
@@ -24,6 +26,13 @@ export default {
         'maroon-bright': 'hsl(var(--maroon-bright))',
         'maroon-neon': 'hsl(var(--maroon-neon))',
         'gold-indian': 'hsl(var(--gold-indian))',
+        'neon-pink': 'hsl(var(--neon-pink))',
+        'neon-magenta': 'hsl(var(--neon-magenta))',
+        'neon-cyan': 'hsl(var(--neon-cyan))',
+        'neon-purple': 'hsl(var(--neon-purple))',
+        'neon-yellow': 'hsl(var(--neon-yellow))',
+        'neon-green': 'hsl(var(--neon-green))',
+        'neon-blue': 'hsl(var(--neon-blue))',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
