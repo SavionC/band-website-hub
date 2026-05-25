@@ -124,9 +124,10 @@ const Index = () => {
       {/* Upcoming Shows Section */}
       <section className="section-padding bg-secondary/30 relative pattern-overlay">
         <div className="container-custom">
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-center text-gradient-maroon mb-12 animate-fade-in">
-            Upcoming Shows
+          <h2 className="font-arcade text-2xl md:text-4xl text-center text-gradient-maroon glow-text-maroon mb-4 animate-fade-in tracking-tight">
+            ►► UPCOMING SHOWS ◄◄
           </h2>
+          <p className="font-retro text-center text-neon-cyan text-xl mb-12">— LEVEL SELECT —</p>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {upcomingShows.map((show, index) => (
               <Card
@@ -174,9 +175,10 @@ const Index = () => {
       {/* Featured Instagram Section */}
       <section className="section-padding relative">
         <div className="container-custom">
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-center text-gradient-maroon mb-12 animate-fade-in">
-            Featured Performances
+          <h2 className="font-arcade text-2xl md:text-4xl text-center text-gradient-maroon glow-text-maroon mb-4 animate-fade-in tracking-tight">
+            ★ FEATURED PERFORMANCES ★
           </h2>
+          <p className="font-retro text-center text-neon-cyan text-xl mb-12">— HALL OF FAME —</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[1, 2, 3, 4, 5].map((item, index) => (
               <Card
