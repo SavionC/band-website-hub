@@ -19,45 +19,41 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card border-t border-border pattern-overlay relative">
+    <footer className="bg-card border-t-2 border-neon-pink/60 pattern-overlay relative shadow-[0_-10px_30px_hsl(var(--neon-pink)/0.2)]">
       <div className="container-custom py-12 md:py-16">
-        {/* Top Section */}
         <div className="grid md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
           <div className="space-y-4">
-            <h2 className="font-display text-3xl font-bold text-gradient-maroon glow-text-maroon">
+            <h2 className="font-arcade text-lg text-gradient-maroon glow-text-maroon">
               STAGE FRIGHT
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              A Multi-Genre Band Bringing Live Energy to Every Stage
+            <p className="font-retro text-xl text-neon-cyan leading-relaxed">
+              ► A MULTI-GENRE BAND BRINGING LIVE ENERGY TO EVERY STAGE
             </p>
-            <p className="text-sm text-muted-foreground">
-              Based in Mumbai, India
+            <p className="font-arcade text-[10px] text-muted-foreground">
+              ◆ BASED IN MUMBAI, INDIA ◆
             </p>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-display text-xl font-semibold text-foreground">
-              Quick Links
+            <h3 className="font-arcade text-xs text-neon-yellow tracking-widest">
+              ▸ QUICK LINKS
             </h3>
             <div className="grid grid-cols-2 gap-2">
               {footerLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className="text-muted-foreground hover:text-maroon-bright transition-colors duration-300"
+                  className="font-retro text-lg text-muted-foreground hover:text-neon-cyan transition-colors duration-200"
                 >
-                  {link.name}
+                  ▸ {link.name}
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Social & Contact */}
           <div className="space-y-4">
-            <h3 className="font-display text-xl font-semibold text-foreground">
-              Connect With Us
+            <h3 className="font-arcade text-xs text-neon-yellow tracking-widest">
+              ▸ CONNECT WITH US
             </h3>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -67,23 +63,22 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className={`text-muted-foreground ${social.color} transition-colors duration-300`}
+                  className="text-neon-cyan hover:text-neon-pink transition-all duration-200 hover:scale-110 hover:drop-shadow-[0_0_10px_hsl(var(--neon-pink))]"
                 >
                   <social.icon className="h-6 w-6" />
                 </a>
               ))}
             </div>
-            <div className="space-y-2 text-sm text-muted-foreground">
-              <a href="mailto:teamstagefright@gmail.com" className="hover:text-maroon-bright transition-colors duration-300 block">teamstagefright@gmail.com</a>
-              <a href="https://wa.me/919867291626" target="_blank" rel="noopener noreferrer" className="hover:text-maroon-bright transition-colors duration-300 block">+91 98672 91626</a>
-              <a href="https://wa.me/919136663411" target="_blank" rel="noopener noreferrer" className="hover:text-maroon-bright transition-colors duration-300 block">+91 91366 63411</a>
+            <div className="space-y-2 font-retro text-lg text-muted-foreground">
+              <a href="mailto:teamstagefright@gmail.com" className="hover:text-neon-cyan transition-colors duration-200 block">▸ teamstagefright@gmail.com</a>
+              <a href="https://wa.me/919867291626" target="_blank" rel="noopener noreferrer" className="hover:text-neon-cyan transition-colors duration-200 block">▸ +91 98672 91626</a>
+              <a href="https://wa.me/919136663411" target="_blank" rel="noopener noreferrer" className="hover:text-neon-cyan transition-colors duration-200 block">▸ +91 91366 63411</a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Stage Fright. All rights reserved.</p>
+        <div className="pt-8 border-t-2 border-neon-pink/30 text-center font-arcade text-[10px] text-muted-foreground tracking-widest">
+          <p>© {new Date().getFullYear()} STAGE FRIGHT ◆ GAME OVER ◆ INSERT COIN TO CONTINUE</p>
         </div>
       </div>
     </footer>

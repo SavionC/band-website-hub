@@ -32,71 +32,102 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background crt-vignette">
       <Navigation />
       <MailingListPopup />
       <GamePopup />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video/Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         </div>
 
-        {/* Animated particles */}
+        {/* Synthwave perspective grid floor */}
+        <div className="absolute bottom-0 left-0 right-0 h-[50vh] overflow-hidden pointer-events-none">
+          <div className="grid-floor absolute inset-x-[-50%] bottom-0 h-full" />
+          <div className="absolute inset-x-0 bottom-1/2 h-px bg-gradient-to-r from-transparent via-neon-pink to-transparent shadow-[0_0_30px_hsl(var(--neon-pink))]" />
+        </div>
+
+        {/* Pixel grid */}
+        <div className="absolute inset-0 pattern-overlay opacity-40" />
+
         <ParticlesBackground />
 
-        {/* Animated pattern overlay */}
-        <div className="absolute inset-0 pattern-overlay opacity-30" />
+        {/* Scanlines */}
+        <div className="absolute inset-0 scanlines opacity-40 pointer-events-none" />
 
-        {/* Content */}
+        {/* Glowing arcade sun */}
+        <div className="absolute top-[18%] left-1/2 -translate-x-1/2 w-72 h-72 md:w-[28rem] md:h-[28rem] rounded-full bg-gradient-to-b from-neon-yellow via-neon-pink to-neon-magenta opacity-30 blur-3xl pointer-events-none" />
+
         <div className="relative z-10 container-custom text-center space-y-8 pt-20">
-          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-bold text-gradient-maroon glow-text-maroon animate-fade-in">
-            STAGE FRIGHT
+          <div className="inline-block px-3 py-1 border border-neon-cyan/60 text-neon-cyan font-arcade text-[10px] tracking-widest animate-fade-in shadow-[0_0_15px_hsl(var(--neon-cyan)/0.5)]">
+            ◆ INSERT COIN ◆ PLAYER 1 READY ◆
+          </div>
+          <h1 className="font-arcade text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gradient-maroon glow-text-maroon animate-fade-in neon-flicker tracking-tight leading-tight">
+            STAGE<br className="sm:hidden" /> FRIGHT
           </h1>
-          <p className="text-xl md:text-3xl font-heading text-foreground/90 max-w-3xl mx-auto animate-fade-in font-semibold">
-            A Multi-Genre Band Bringing Live Energy to Every Stage
+          <p className="font-retro text-2xl md:text-4xl text-neon-cyan glow-text-cyan max-w-3xl mx-auto animate-fade-in tracking-wide">
+            ► A MULTI-GENRE BAND BRINGING LIVE ENERGY TO EVERY STAGE ◄
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in pt-4">
             <Link to="/booking">
               <Button
                 size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-r from-maroon-bright to-maroon-neon hover:from-maroon-neon hover:to-maroon-bright text-white font-semibold shadow-[0_0_30px_hsl(var(--maroon-bright)/0.6)] hover:shadow-[0_0_40px_hsl(var(--maroon-bright)/0.8)] transition-all duration-300"
+                className="font-arcade text-xs md:text-sm px-8 py-6 bg-neon-pink text-background hover:bg-neon-magenta border-2 border-neon-pink hover:border-neon-yellow shadow-[0_0_30px_hsl(var(--neon-pink)/0.7),inset_0_0_15px_hsl(var(--neon-yellow)/0.3)] hover:shadow-[0_0_50px_hsl(var(--neon-pink)/0.9)] rounded-none transition-all duration-200 hover:-translate-y-0.5"
               >
-                Book Us Now
+                ▶ BOOK US NOW
               </Button>
             </Link>
             <Link to="/music">
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-6 border-2 border-maroon-bright text-maroon-bright hover:bg-maroon-bright hover:text-white font-semibold transition-all duration-300"
+                className="font-arcade text-xs md:text-sm px-8 py-6 border-2 border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-background bg-transparent rounded-none shadow-[0_0_20px_hsl(var(--neon-cyan)/0.5)] hover:shadow-[0_0_40px_hsl(var(--neon-cyan)/0.8)] transition-all duration-200 hover:-translate-y-0.5"
               >
                 <Music className="mr-2 h-5 w-5" />
-                Watch Performances
+                PRESS START
               </Button>
             </Link>
           </div>
+
+          <div className="flex items-center justify-center gap-6 pt-6 font-arcade text-[10px] text-muted-foreground">
+            <span>HI-SCORE</span>
+            <span className="text-neon-yellow">999999</span>
+            <span className="text-neon-pink">♥ ♥ ♥</span>
+          </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-maroon-bright rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-3 bg-maroon-bright rounded-full animate-glow-pulse" />
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+          <div className="w-6 h-10 border-2 border-neon-cyan rounded-full flex items-start justify-center p-2 shadow-[0_0_15px_hsl(var(--neon-cyan)/0.6)]">
+            <div className="w-1 h-3 bg-neon-cyan rounded-full" />
           </div>
         </div>
       </section>
 
+      {/* Marquee ticker */}
+      <div className="relative border-y-2 border-neon-pink/60 bg-background/80 overflow-hidden py-3 shadow-[0_0_20px_hsl(var(--neon-pink)/0.4)]">
+        <div className="marquee-track flex whitespace-nowrap font-arcade text-xs md:text-sm">
+          {Array.from({ length: 2 }).map((_, k) => (
+            <div key={k} className="flex items-center gap-10 px-10 shrink-0">
+              {["★ NEW SONG DROPPING SOON ★", "♪ PLAY THE ARCADE GAME ♪", "▶ BOOK NOW ◀", "♥ MUMBAI LIVE BAND ♥", "◆ STAGE FRIGHT ◆", "✦ MULTI-GENRE ✦"].map((t, i) => (
+                <span key={i} className={i % 2 ? "text-neon-cyan" : "text-neon-pink"}>{t}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Upcoming Shows Section */}
       <section className="section-padding bg-secondary/30 relative pattern-overlay">
         <div className="container-custom">
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-center text-gradient-maroon mb-12 animate-fade-in">
-            Upcoming Shows
+          <h2 className="font-arcade text-2xl md:text-4xl text-center text-gradient-maroon glow-text-maroon mb-4 animate-fade-in tracking-tight">
+            ►► UPCOMING SHOWS ◄◄
           </h2>
+          <p className="font-retro text-center text-neon-cyan text-xl mb-12">— LEVEL SELECT —</p>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {upcomingShows.map((show, index) => (
               <Card
@@ -144,9 +175,10 @@ const Index = () => {
       {/* Featured Instagram Section */}
       <section className="section-padding relative">
         <div className="container-custom">
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-center text-gradient-maroon mb-12 animate-fade-in">
-            Featured Performances
+          <h2 className="font-arcade text-2xl md:text-4xl text-center text-gradient-maroon glow-text-maroon mb-4 animate-fade-in tracking-tight">
+            ★ FEATURED PERFORMANCES ★
           </h2>
+          <p className="font-retro text-center text-neon-cyan text-xl mb-12">— HALL OF FAME —</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[1, 2, 3, 4, 5].map((item, index) => (
               <Card

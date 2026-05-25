@@ -62,37 +62,35 @@ const ParticlesBackground = () => {
         if (p.y > h) p.y = 0;
 
         const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
+        const hueOptions = [320, 180, 270, 55];
+        const hue = hueOptions[Math.floor(Math.abs(p.x + p.y) / 40) % hueOptions.length];
 
-        // Draw particle glow
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
-        gradient.addColorStop(0, `hsla(348, 78%, 45%, ${currentOpacity})`);
-        gradient.addColorStop(0.5, `hsla(330, 85%, 55%, ${currentOpacity * 0.3})`);
-        gradient.addColorStop(1, `hsla(348, 78%, 45%, 0)`);
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 5);
+        gradient.addColorStop(0, `hsla(${hue}, 100%, 60%, ${currentOpacity})`);
+        gradient.addColorStop(0.5, `hsla(${hue}, 100%, 55%, ${currentOpacity * 0.3})`);
+        gradient.addColorStop(1, `hsla(${hue}, 100%, 55%, 0)`);
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.size * 5, 0, Math.PI * 2);
         ctx.fillStyle = gradient;
         ctx.fill();
 
-        // Draw particle core
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(348, 78%, 55%, ${currentOpacity})`;
-        ctx.fill();
+        // Pixel core for 8-bit feel
+        ctx.fillStyle = `hsla(${hue}, 100%, 70%, ${currentOpacity})`;
+        ctx.fillRect(p.x - p.size, p.y - p.size, p.size * 2, p.size * 2);
       });
 
-      // Draw connections
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DISTANCE) {
-            const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.15;
+            const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.18;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `hsla(348, 78%, 45%, ${opacity})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `hsla(320, 100%, 60%, ${opacity})`;
+            ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         }
