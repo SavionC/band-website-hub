@@ -9,6 +9,7 @@ import GamePopup from "@/components/GamePopup";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import heroImage from "@/assets/hero-stage-fright.jpg";
 import logoNeon from "@/assets/logo-neon.png";
+import bandArcade from "@/assets/band-arcade.png";
 
 const Index = () => {
   const upcomingShows = [
@@ -69,11 +70,14 @@ const Index = () => {
             ◆ INSERT COIN ◆ PLAYER 1 READY ◆
           </div>
           <h1 className="sr-only">Stage Fright</h1>
-          <img
-            src={logoNeon}
-            alt="Stage Fright"
-            className="mx-auto w-full max-w-md md:max-w-2xl lg:max-w-3xl h-auto animate-fade-in drop-shadow-[0_0_30px_hsl(var(--neon-pink)/0.7)]"
-          />
+          <div className="relative mx-auto w-full max-w-2xl md:max-w-4xl lg:max-w-5xl animate-fade-in">
+            <div className="absolute -inset-6 bg-gradient-to-r from-neon-pink/30 via-neon-magenta/20 to-neon-cyan/30 blur-3xl rounded-full pointer-events-none" />
+            <img
+              src={bandArcade}
+              alt="Stage Fright band arcade characters on stage"
+              className="relative w-full h-auto rounded-lg border-2 border-neon-pink/50 shadow-[0_0_60px_hsl(var(--neon-pink)/0.5),0_0_120px_hsl(var(--neon-cyan)/0.3)]"
+            />
+          </div>
           <p className="font-retro text-2xl md:text-4xl text-neon-cyan glow-text-cyan max-w-3xl mx-auto animate-fade-in tracking-wide">
             ► A MULTI-GENRE BAND BRINGING LIVE ENERGY TO EVERY STAGE ◄
           </p>
