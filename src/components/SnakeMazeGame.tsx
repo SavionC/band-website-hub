@@ -5,14 +5,13 @@ type Cell = { x: number; y: number };
 
 const COLS = 15;
 const ROWS = 12;
-const INITIAL_SPEED = 180;
-const NOTES_TO_COLLECT = 5;
+const INITIAL_SPEED = 230;
+const NOTES_TO_COLLECT = 3;
 
-// Simpler maze - just a few small obstacles
+// Very light maze - minimal obstacles for easy gameplay
 const MAZE_WALLS: Cell[] = [
-  ...Array.from({ length: 3 }, (_, i) => ({ x: 4 + i, y: 3 })),
-  ...Array.from({ length: 3 }, (_, i) => ({ x: 9 + i, y: 8 })),
-  { x: 7, y: 5 }, { x: 7, y: 6 },
+  { x: 5, y: 4 }, { x: 6, y: 4 },
+  { x: 9, y: 7 }, { x: 10, y: 7 },
 ];
 
 interface SnakeMazeGameProps {
