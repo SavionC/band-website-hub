@@ -253,14 +253,14 @@ const SnakeMazeGame = ({ onWin }: SnakeMazeGameProps) => {
         className="border border-maroon-bright/50 rounded"
         style={{ width: COLS * cellSize, height: ROWS * cellSize }}
       />
-      {/* D-pad controls - always visible on touch devices */}
-      <div className="grid grid-cols-3 gap-1.5 sm:hidden mt-1">
+      {/* D-pad controls - visible on touch devices */}
+      <div className="grid grid-cols-3 gap-3 sm:hidden mt-4 w-full max-w-[260px] mx-auto">
         <div />
-        <button onTouchStart={(e) => { e.preventDefault(); changeDir("UP"); }} className="bg-secondary text-foreground rounded-lg p-3 text-xl font-bold active:bg-maroon-bright select-none">▲</button>
+        <button onTouchStart={(e) => { e.preventDefault(); changeDir("UP"); }} className="bg-secondary text-foreground rounded-xl py-4 text-2xl font-bold active:bg-maroon-bright shadow-md select-none">▲</button>
         <div />
-        <button onTouchStart={(e) => { e.preventDefault(); changeDir("LEFT"); }} className="bg-secondary text-foreground rounded-lg p-3 text-xl font-bold active:bg-maroon-bright select-none">◄</button>
-        <button onTouchStart={(e) => { e.preventDefault(); changeDir("DOWN"); }} className="bg-secondary text-foreground rounded-lg p-3 text-xl font-bold active:bg-maroon-bright select-none">▼</button>
-        <button onTouchStart={(e) => { e.preventDefault(); changeDir("RIGHT"); }} className="bg-secondary text-foreground rounded-lg p-3 text-xl font-bold active:bg-maroon-bright select-none">►</button>
+        <button onTouchStart={(e) => { e.preventDefault(); changeDir("LEFT"); }} className="bg-secondary text-foreground rounded-xl py-4 text-2xl font-bold active:bg-maroon-bright shadow-md select-none">◄</button>
+        <button onTouchStart={(e) => { e.preventDefault(); changeDir("DOWN"); }} className="bg-secondary text-foreground rounded-xl py-4 text-2xl font-bold active:bg-maroon-bright shadow-md select-none">▼</button>
+        <button onTouchStart={(e) => { e.preventDefault(); changeDir("RIGHT"); }} className="bg-secondary text-foreground rounded-xl py-4 text-2xl font-bold active:bg-maroon-bright shadow-md select-none">►</button>
       </div>
       {gameOver && collected < NOTES_TO_COLLECT && (
         <button onClick={resetGame} className="bg-maroon-bright text-foreground px-4 py-2 rounded font-mono text-sm hover:bg-maroon-neon transition-colors">
