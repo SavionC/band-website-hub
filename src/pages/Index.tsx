@@ -9,7 +9,7 @@ import GamePopup from "@/components/GamePopup";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import heroImage from "@/assets/hero-stage-fright.jpg";
 import logoNeon from "@/assets/logo-neon.png";
-import bandArcade from "@/assets/band-arcade.png";
+import bandArcade from "@/assets/band-photo.jpg";
 
 const Index = () => {
   const upcomingShows = [
