@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logoNeon from "@/assets/logo-neon.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,11 +42,12 @@ const Navigation = () => {
     >
       <div className="container-custom py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="group flex items-center gap-2">
-            <span className="font-arcade text-neon-yellow text-xs hidden sm:inline animate-pulse">◆</span>
-            <h1 className="font-arcade text-base md:text-xl text-gradient-maroon glow-text-maroon transition-all duration-300 group-hover:scale-105 tracking-tight">
-              STAGE FRIGHT
-            </h1>
+          <Link to="/" className="group flex items-center gap-2" aria-label="Stage Fright home">
+            <img
+              src={logoNeon}
+              alt="Stage Fright logo"
+              className="h-10 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_15px_hsl(var(--neon-pink)/0.7)]"
+            />
           </Link>
 
           <div className="hidden lg:flex items-center gap-6">
