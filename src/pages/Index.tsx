@@ -70,18 +70,18 @@ const Index = () => {
             ◆ INSERT COIN ◆ PLAYER 1 READY ◆
           </div>
           <h1 className="sr-only">Stage Fright</h1>
-          <div className="relative mx-auto w-full max-w-2xl md:max-w-4xl lg:max-w-5xl animate-fade-in">
-            <div className="absolute -inset-6 bg-gradient-to-r from-neon-pink/30 via-neon-magenta/20 to-neon-cyan/30 blur-3xl rounded-full pointer-events-none" />
+          <div className="relative mx-auto w-full max-w-md md:max-w-lg lg:max-w-xl animate-fade-in mt-4">
+            <div className="absolute -inset-8 bg-gradient-to-r from-neon-pink/25 via-neon-magenta/15 to-neon-cyan/25 blur-3xl rounded-full pointer-events-none" />
             <img
               src={bandArcade}
               alt="Stage Fright band arcade characters on stage"
-              className="relative w-full h-auto rounded-lg border-2 border-neon-pink/50 shadow-[0_0_60px_hsl(var(--neon-pink)/0.5),0_0_120px_hsl(var(--neon-cyan)/0.3)]"
+              className="relative w-full h-auto rounded-xl border-2 border-neon-pink/50 shadow-[0_0_50px_hsl(var(--neon-pink)/0.45),0_0_100px_hsl(var(--neon-cyan)/0.25)]"
             />
           </div>
-          <p className="font-retro text-2xl md:text-4xl text-neon-cyan glow-text-cyan max-w-3xl mx-auto animate-fade-in tracking-wide">
+          <p className="font-retro text-xl md:text-2xl lg:text-3xl text-neon-cyan glow-text-cyan max-w-3xl mx-auto animate-fade-in tracking-wide pt-6 md:pt-10">
             ► A MULTI-GENRE BAND BRINGING LIVE ENERGY TO EVERY STAGE ◄
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in pt-6 md:pt-8">
             <Link to="/booking">
               <Button
                 size="lg"
