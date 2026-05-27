@@ -102,7 +102,7 @@ const Index = () => {
             </Link>
           </div>
 
-          <div className="flex items-center justify-center gap-6 pt-6 font-arcade text-[10px] text-muted-foreground">
+          <div className="flex items-center justify-center gap-6 pt-10 md:pt-14 font-arcade text-[10px] text-muted-foreground">
             <span>HI-SCORE</span>
             <span className="text-neon-yellow">999999</span>
             <span className="text-neon-pink">♥ ♥ ♥</span>
