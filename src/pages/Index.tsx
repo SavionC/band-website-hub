@@ -8,6 +8,7 @@ import MailingListPopup from "@/components/MailingListPopup";
 import GamePopup from "@/components/GamePopup";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import heroImage from "@/assets/hero-stage-fright.jpg";
+import logoNeon from "@/assets/logo-neon.png";
 
 const Index = () => {
   const upcomingShows = [
