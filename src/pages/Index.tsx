@@ -68,9 +68,12 @@ const Index = () => {
           <div className="inline-block px-3 py-1 border border-neon-cyan/60 text-neon-cyan font-arcade text-[10px] tracking-widest animate-fade-in shadow-[0_0_15px_hsl(var(--neon-cyan)/0.5)]">
             ◆ INSERT COIN ◆ PLAYER 1 READY ◆
           </div>
-          <h1 className="font-arcade text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gradient-maroon glow-text-maroon animate-fade-in neon-flicker tracking-tight leading-tight">
-            STAGE<br className="sm:hidden" /> FRIGHT
-          </h1>
+          <h1 className="sr-only">Stage Fright</h1>
+          <img
+            src={logoNeon}
+            alt="Stage Fright"
+            className="mx-auto w-full max-w-md md:max-w-2xl lg:max-w-3xl h-auto animate-fade-in drop-shadow-[0_0_30px_hsl(var(--neon-pink)/0.7)]"
+          />
           <p className="font-retro text-2xl md:text-4xl text-neon-cyan glow-text-cyan max-w-3xl mx-auto animate-fade-in tracking-wide">
             ► A MULTI-GENRE BAND BRINGING LIVE ENERGY TO EVERY STAGE ◄
           </p>
