@@ -1,37 +1,16 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Calendar, MapPin, Music } from "lucide-react";
+import { Music, Users, Disc3 } from "lucide-react";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import MailingListPopup from "@/components/MailingListPopup";
 import GamePopup from "@/components/GamePopup";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import heroImage from "@/assets/hero-stage-fright.jpg";
-import logoNeon from "@/assets/logo-neon.png";
 import bandArcade from "@/assets/band-photo.jpg";
 
 const Index = () => {
-  const upcomingShows = [
-    {
-      date: "Jan 15, 2025",
-      venue: "Blue Frog",
-      city: "Mumbai",
-      time: "8:00 PM",
-    },
-    {
-      date: "Jan 28, 2025",
-      venue: "Hard Rock Cafe",
-      city: "Mumbai",
-      time: "9:00 PM",
-    },
-    {
-      date: "Feb 10, 2025",
-      venue: "Phoenix Marketcity",
-      city: "Mumbai",
-      time: "7:30 PM",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-background crt-vignette">
@@ -129,51 +108,50 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Upcoming Shows Section */}
+      {/* About Section */}
       <section className="section-padding bg-secondary/30 relative pattern-overlay">
-        <div className="container-custom">
+        <div className="container-custom max-w-4xl">
           <h2 className="font-arcade text-2xl md:text-4xl text-center text-gradient-maroon glow-text-maroon mb-4 animate-fade-in tracking-tight">
-            ►► UPCOMING SHOWS ◄◄
+            ►► ABOUT STAGE FRIGHT ◄◄
           </h2>
-          <p className="font-retro text-center text-neon-cyan text-xl mb-12">— LEVEL SELECT —</p>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {upcomingShows.map((show, index) => (
-              <Card
-                key={index}
-                className="bg-card border-maroon-bright/30 hover:border-maroon-bright transition-all duration-500 animate-fade-in glow-border-maroon group"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <div className="p-6 space-y-4">
-                  <div className="flex items-center gap-2 text-maroon-bright font-semibold">
-                    <Calendar className="h-5 w-5" />
-                    <span>{show.date}</span>
-                  </div>
-                  <h3 className="font-heading text-2xl font-bold text-foreground group-hover:text-gradient-maroon transition-colors duration-300">
-                    {show.venue}
-                  </h3>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <MapPin className="h-4 w-4" />
-                    <span>{show.city}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{show.time}</p>
-                  <Button
-                    variant="outline"
-                    className="w-full border-maroon-bright/50 text-maroon-bright hover:bg-maroon-bright hover:text-white transition-all duration-300"
-                  >
-                    Get Tickets
-                  </Button>
-                </div>
-              </Card>
-            ))}
+          <p className="font-retro text-center text-neon-cyan text-xl mb-12 animate-fade-in">— PLAYER 1 PROFILE —</p>
+
+          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed animate-fade-in border-2 border-neon-cyan/30 p-8 md:p-12 bg-background/50 backdrop-blur-sm shadow-[0_0_40px_hsl(var(--neon-cyan)/0.15)]">
+            <p>
+              Stage Fright is a boundary-pushing collective of young musicians united by a shared love for experimentation and sound. Blending influences across genres, from rock, pop and r&amp;b to bollywood, electronic, and beyond, the band crafts a dynamic fusion that refuses to sit still or be boxed in.
+            </p>
+            <p>
+              The band's story began in 2024, when a group of like-minded musicians came together simply to play, with no pressure and no expectations, just a shared passion for music. What started as casual jam sessions quickly turned into something more. As they spent more time creating together, they realized there was a unique chemistry between them, something with real potential. What was once a hobby soon became a commitment, and Stage Fright was officially born.
+            </p>
+            <p>
+              Their first single, Game Night, came together almost by accident, an unplanned spark that revealed just how naturally they could create as a unit. That moment became a turning point, inspiring them to dive deeper into original music and begin shaping their sound with intention. Since then, they have been building a catalogue that reflects not just their influences, but their identity as a band.
+            </p>
+            <p>
+              More than just collaborators, Stage Fright are a group of young musicians who found a sense of family in each other. That connection lies at the heart of everything they create. Their music is honest, energetic, and deeply personal, an extension of who they are and what they stand for.
+            </p>
+            <p>
+              With an EP on the way, Stage Fright is not just making music, they are carving out a voice. A voice for their generation, for youth navigating change, identity, and expression. Through their sound, they hope to share not just songs, but a feeling, something real, something relatable, and something that brings people together.
+            </p>
           </div>
-          <div className="text-center mt-10">
-            <Link to="/shows">
+
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in">
+            <Link to="/about">
+              <Button
+                size="lg"
+                className="font-arcade text-xs md:text-sm px-8 py-6 bg-neon-cyan text-background hover:bg-neon-yellow border-2 border-neon-cyan hover:border-neon-yellow shadow-[0_0_30px_hsl(var(--neon-cyan)/0.7),inset_0_0_15px_hsl(var(--neon-pink)/0.3)] hover:shadow-[0_0_50px_hsl(var(--neon-yellow)/0.9)] rounded-none transition-all duration-200 hover:-translate-y-0.5"
+              >
+                <Users className="mr-2 h-5 w-5" />
+                MEET THE BAND
+              </Button>
+            </Link>
+            <Link to="/music">
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-maroon-bright text-maroon-bright hover:bg-maroon-bright hover:text-white font-semibold transition-all duration-300"
+                className="font-arcade text-xs md:text-sm px-8 py-6 border-2 border-neon-pink text-neon-pink hover:bg-neon-pink hover:text-background bg-transparent rounded-none shadow-[0_0_20px_hsl(var(--neon-pink)/0.5)] hover:shadow-[0_0_40px_hsl(var(--neon-pink)/0.8)] transition-all duration-200 hover:-translate-y-0.5"
               >
-                View All Shows
+                <Disc3 className="mr-2 h-5 w-5" />
+                OUR MUSIC
               </Button>
             </Link>
           </div>
