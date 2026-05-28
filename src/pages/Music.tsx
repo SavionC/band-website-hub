@@ -1,6 +1,6 @@
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
-import coverArt from "@/assets/arcadestand.jpg";
+import coverArt from "@/assets/arcadestand.jpg.jpeg";
 
 const Music = () => {
   return (
