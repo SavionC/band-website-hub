@@ -22,7 +22,14 @@ export default {
         'retro': ['"Share Tech Mono"', 'monospace'],
         'mono': ['"Share Tech Mono"', 'monospace'],
       },
-      colors: {} as any,
+      colors: {
+        'sf-violet': 'hsl(var(--sf-violet))',
+        'sf-pink': 'hsl(var(--sf-pink))',
+        'sf-red': 'hsl(var(--sf-red))',
+        'sf-cyan': 'hsl(var(--sf-cyan))',
+        'sf-amber': 'hsl(var(--sf-amber))',
+        'sf-text': 'hsl(var(--sf-text))',
+        'sf-text-muted': 'hsl(var(--sf-text-muted))',
       colors: {
         'maroon-deep': 'hsl(var(--maroon-deep))',
         'maroon-rich': 'hsl(var(--maroon-rich))',
