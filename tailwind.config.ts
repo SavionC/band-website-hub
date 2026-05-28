@@ -15,11 +15,14 @@ export default {
     extend: {
       fontFamily: {
         'display': ['"Press Start 2P"', 'monospace'],
-        'heading': ['Orbitron', 'sans-serif'],
-        'sans': ['Poppins', 'sans-serif'],
+        'heading': ['Inter', 'system-ui', 'sans-serif'],
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'body': ['Inter', 'system-ui', 'sans-serif'],
         'arcade': ['"Press Start 2P"', 'monospace'],
-        'retro': ['VT323', 'monospace'],
+        'retro': ['"Share Tech Mono"', 'monospace'],
+        'mono': ['"Share Tech Mono"', 'monospace'],
       },
+      colors: {} as any,
       colors: {
         'maroon-deep': 'hsl(var(--maroon-deep))',
         'maroon-rich': 'hsl(var(--maroon-rich))',
