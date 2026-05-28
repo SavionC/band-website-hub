@@ -11,26 +11,6 @@ import heroImage from "@/assets/hero-stage-fright.jpg";
 import bandArcade from "@/assets/band-photo.jpg";
 
 const Index = () => {
-  const upcomingShows = [
-    {
-      date: "Jan 15, 2025",
-      venue: "Blue Frog",
-      city: "Mumbai",
-      time: "8:00 PM",
-    },
-    {
-      date: "Jan 28, 2025",
-      venue: "Hard Rock Cafe",
-      city: "Mumbai",
-      time: "9:00 PM",
-    },
-    {
-      date: "Feb 10, 2025",
-      venue: "Phoenix Marketcity",
-      city: "Mumbai",
-      time: "7:30 PM",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-background crt-vignette">
