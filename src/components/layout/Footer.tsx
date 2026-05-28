@@ -6,7 +6,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/stagefr1ght" },
     { icon: Youtube, label: "YouTube", href: "https://youtube.com/@stagefr1ghtband?si=P0A80wztXzcGVNx5" },
-    { icon: Music2, label: "Spotify", href: "https://spotify.com/stagefright" },
+    { icon: Music2, label: "Spotify", href: "#" },
   ];
 
   const footerLinks = [

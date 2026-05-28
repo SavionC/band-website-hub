@@ -70,7 +70,7 @@ const Navigation = () => {
                 size="sm"
                 className="font-mono text-[11px] tracking-[0.2em] uppercase bg-sf-pink text-background hover:bg-sf-pink/90 border border-sf-pink rounded-none shadow-[0_0_18px_hsl(var(--sf-pink)/0.55)]"
               >
-                ▶ BOOK US
+                ▶  GAME NIGHT — JUL 4
               </Button>
             </Link>
           </div>
@@ -104,7 +104,7 @@ const Navigation = () => {
             })}
             <Link to="/booking" className="mt-2">
               <Button className="w-full font-mono text-xs tracking-[0.2em] bg-sf-pink text-background hover:bg-sf-pink/90 rounded-none">
-                ▶ BOOK US
+                ▶ GAME NIGHT — JUL 4
               </Button>
             </Link>
           </div>
