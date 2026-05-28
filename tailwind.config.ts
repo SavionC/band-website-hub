@@ -30,7 +30,6 @@ export default {
         'sf-amber': 'hsl(var(--sf-amber))',
         'sf-text': 'hsl(var(--sf-text))',
         'sf-text-muted': 'hsl(var(--sf-text-muted))',
-      colors: {
         'maroon-deep': 'hsl(var(--maroon-deep))',
         'maroon-rich': 'hsl(var(--maroon-rich))',
         'maroon-bright': 'hsl(var(--maroon-bright))',
