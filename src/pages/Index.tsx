@@ -4,7 +4,7 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import MailingListPopup from "@/components/MailingListPopup";
 import GamePopup from "@/components/GamePopup";
-import coverArt from "@/assets/band-photo.jpg";
+import coverArt from "@/assets/arcadestand.jpg.jpeg";
 
 const Index = () => {
   return (
