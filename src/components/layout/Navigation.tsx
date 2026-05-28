@@ -11,32 +11,28 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Music", path: "/music" },
-    { name: "Shows", path: "/shows" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Contact", path: "/contact" },
+    { name: "HOME", path: "/" },
+    { name: "MUSIC", path: "/music" },
+    { name: "ABOUT", path: "/about" },
+    { name: "SHOWS", path: "/shows" },
+    { name: "GALLERY", path: "/gallery" },
+    { name: "CONTACT", path: "/contact" },
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+  useEffect(() => setIsOpen(false), [location]);
 
   return (
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/90 backdrop-blur-md border-b-2 border-neon-pink/60 shadow-[0_0_30px_hsl(var(--neon-pink)/0.4)]"
+          ? "bg-background/90 backdrop-blur-md border-b border-sf-violet/40 shadow-[0_0_30px_hsl(var(--sf-violet)/0.25)]"
           : "bg-transparent"
       )}
     >
@@ -46,29 +42,33 @@ const Navigation = () => {
             <img
               src={logoNeon}
               alt="Stage Fright logo"
-              className="h-10 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_15px_hsl(var(--neon-pink)/0.7)]"
+              className="h-9 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_14px_hsl(var(--sf-violet)/0.7)]"
             />
           </Link>
 
-          <div className="hidden lg:flex items-center gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={cn(
-                  "font-arcade text-[10px] uppercase tracking-widest text-foreground/80 hover:text-neon-cyan transition-colors duration-200 relative group",
-                  location.pathname === item.path && "text-neon-cyan glow-text-cyan"
-                )}
-              >
-                {location.pathname === item.path && <span className="mr-1 text-neon-pink">▶</span>}
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-cyan transition-all duration-300 group-hover:w-full shadow-[0_0_10px_hsl(var(--neon-cyan))]" />
-              </Link>
-            ))}
+          <div className="hidden lg:flex items-center gap-8">
+            {navItems.map((item) => {
+              const active = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={cn(
+                    "font-mono text-xs uppercase tracking-[0.2em] transition-colors duration-200 relative",
+                    active ? "text-sf-pink" : "text-foreground/70 hover:text-sf-violet"
+                  )}
+                >
+                  {item.name}
+                  {active && (
+                    <span className="absolute -bottom-2 left-0 right-0 h-px bg-sf-pink shadow-[0_0_8px_hsl(var(--sf-pink))]" />
+                  )}
+                </Link>
+              );
+            })}
             <Link to="/booking">
               <Button
                 size="sm"
-                className="font-arcade text-[10px] bg-neon-pink text-background hover:bg-neon-yellow hover:text-background border-2 border-neon-pink hover:border-neon-yellow rounded-none shadow-[0_0_20px_hsl(var(--neon-pink)/0.6)] hover:shadow-[0_0_30px_hsl(var(--neon-yellow)/0.8)] transition-all duration-200"
+                className="font-mono text-[11px] tracking-[0.2em] uppercase bg-sf-pink text-background hover:bg-sf-pink/90 border border-sf-pink rounded-none shadow-[0_0_18px_hsl(var(--sf-pink)/0.55)]"
               >
                 ▶ BOOK US
               </Button>
@@ -78,7 +78,7 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden text-neon-cyan hover:text-neon-pink hover:bg-transparent"
+            className="lg:hidden text-sf-violet hover:text-sf-pink hover:bg-transparent"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -86,24 +86,24 @@ const Navigation = () => {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden mt-6 pb-6 flex flex-col gap-4 animate-fade-in-down border-t-2 border-neon-pink/40 pt-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={cn(
-                  "font-arcade text-xs uppercase tracking-widest text-foreground/80 hover:text-neon-cyan transition-colors duration-200",
-                  location.pathname === item.path && "text-neon-cyan glow-text-cyan"
-                )}
-              >
-                {location.pathname === item.path ? "▶ " : "  "}{item.name}
-              </Link>
-            ))}
+          <div className="lg:hidden mt-6 pb-6 flex flex-col gap-5 border-t border-sf-violet/30 pt-6 animate-fade-in-down">
+            {navItems.map((item) => {
+              const active = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={cn(
+                    "font-mono text-sm uppercase tracking-[0.2em]",
+                    active ? "text-sf-pink" : "text-foreground/80 hover:text-sf-violet"
+                  )}
+                >
+                  {active ? "▶ " : "  "}{item.name}
+                </Link>
+              );
+            })}
             <Link to="/booking" className="mt-2">
-              <Button
-                size="lg"
-                className="w-full font-arcade text-xs bg-neon-pink text-background hover:bg-neon-yellow hover:text-background border-2 border-neon-pink rounded-none"
-              >
+              <Button className="w-full font-mono text-xs tracking-[0.2em] bg-sf-pink text-background hover:bg-sf-pink/90 rounded-none">
                 ▶ BOOK US
               </Button>
             </Link>

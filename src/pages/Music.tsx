@@ -1,157 +1,73 @@
-import { Card } from "@/components/ui/card";
-import { Music as MusicIcon, Play, Image } from "lucide-react";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
-import performance1 from "@/assets/performance-1.jpg";
-import venue1 from "@/assets/venue-1.jpg";
+import coverArt from "@/assets/band-photo.jpg";
 
 const Music = () => {
-  const videos = [
-    { id: 1, title: "Live at Blue Frog Mumbai", platform: "YouTube" },
-    { id: 2, title: "Acoustic Session - Bollywood Mashup", platform: "Instagram" },
-    { id: 3, title: "Corporate Event Highlights", platform: "YouTube" },
-    { id: 4, title: "Wedding Performance", platform: "Instagram" },
-    { id: 5, title: "Rock Night Special", platform: "YouTube" },
-    { id: 6, title: "Behind The Scenes", platform: "Instagram" },
-  ];
-
-  const photoGallery = [
-    { id: 1, src: performance1, alt: "Live Performance" },
-    { id: 2, src: venue1, alt: "Venue Setup" },
-    { id: 3, src: performance1, alt: "Band on Stage" },
-    { id: 4, src: venue1, alt: "Concert Crowd" },
-    { id: 5, src: performance1, alt: "Practice Session" },
-    { id: 6, src: venue1, alt: "Backstage" },
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background crt-vignette">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 relative pattern-overlay">
+      <section className="pt-32 pb-12">
         <div className="container-custom">
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-center text-gradient-maroon glow-text-maroon mb-6 animate-fade-in">
-            Music & Media
+          <p className="font-mono text-xs tracking-[0.3em] text-sf-pink mb-4 animate-fade-in">◆ TRACK LOADED ◆</p>
+          <h1 className="font-arcade text-xl md:text-3xl text-sf-violet glow-violet cursor-blink animate-fade-in">
+            NOW PLAYING
           </h1>
-          <p className="text-xl md:text-2xl text-center text-muted-foreground max-w-3xl mx-auto animate-fade-in">
-            Watch our performances and explore our gallery
-          </p>
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="section-padding bg-secondary/30">
-        <div className="container-custom">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <Play className="h-8 w-8 text-maroon-bright" />
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-gradient-maroon animate-fade-in">
-              Video Performances
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {videos.map((video, index) => (
-              <Card
-                key={video.id}
-                className="bg-card border-maroon-bright/30 hover:border-maroon-bright overflow-hidden group cursor-pointer transition-all duration-500 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative aspect-video bg-gradient-to-br from-maroon-deep/70 to-maroon-bright/70 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                  <Play className="h-16 w-16 text-maroon-neon drop-shadow-[0_0_15px_hsl(var(--maroon-neon))] group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-foreground group-hover:text-maroon-bright transition-colors duration-300">
-                    {video.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-1">{video.platform}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-          <p className="text-center text-muted-foreground mt-10 text-lg">
-            Watch more on{" "}
-            <a
-              href="https://youtube.com/@stagefright"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-maroon-bright hover:text-maroon-neon font-semibold transition-colors duration-300"
-            >
-              YouTube
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://instagram.com/stagefright"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-maroon-bright hover:text-maroon-neon font-semibold transition-colors duration-300"
-            >
-              Instagram
-            </a>
-          </p>
-        </div>
-      </section>
+      <section className="pb-24">
+        <div className="container-custom max-w-5xl">
+          <article className="bg-card border border-sf-violet/40 glow-border-violet p-6 md:p-10 grid md:grid-cols-[1fr_1.2fr] gap-10 items-center animate-fade-in">
+            <div className="relative aspect-square overflow-hidden border border-sf-violet/50">
+              <img src={coverArt} alt="Game Night cover art" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-sf-violet/10 via-transparent to-sf-pink/10 mix-blend-screen pointer-events-none" />
+              <span className="absolute top-3 left-3 font-mono text-[10px] tracking-[0.3em] text-sf-cyan bg-background/70 px-2 py-1 border border-sf-cyan/40">
+                ► PLAYING
+              </span>
+            </div>
 
-      {/* Photo Gallery Section */}
-      <section className="section-padding relative">
-        <div className="container-custom">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <Image className="h-8 w-8 text-maroon-bright" />
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-gradient-maroon animate-fade-in">
-              Photo Gallery
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {photoGallery.map((photo, index) => (
-              <Card
-                key={photo.id}
-                className="aspect-square bg-card border-maroon-bright/30 hover:border-maroon-bright overflow-hidden group cursor-pointer transition-all duration-500 animate-scale-in"
-                style={{ animationDelay: `${index * 0.08}s` }}
-              >
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Audio Player Section */}
-      <section className="section-padding bg-secondary/30 pattern-overlay">
-        <div className="container-custom max-w-4xl">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <MusicIcon className="h-8 w-8 text-maroon-bright" />
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-gradient-maroon animate-fade-in">
-              Listen to Our Music
-            </h2>
-          </div>
-          <Card className="bg-card border-maroon-bright/50 p-8 glow-border-maroon">
-            <div className="text-center space-y-6">
-              <p className="text-lg text-muted-foreground">
-                Stream our music on your favorite platform
+            <div className="space-y-5">
+              <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-foreground/50">DEBUT SINGLE</p>
+              <h2 className="font-arcade text-2xl md:text-4xl text-sf-pink glow-pink leading-tight">
+                GAME NIGHT
+              </h2>
+              <p className="font-mono text-sm tracking-[0.2em] uppercase text-sf-violet">
+                STAGE FRIGHT · 04 . 07 . 2025
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="https://spotify.com/stagefright"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  Open on Spotify
-                </a>
-                <a
-                  href="https://music.youtube.com/stagefright"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  Open on YouTube Music
-                </a>
+              <p className="font-body text-foreground/80 leading-relaxed">
+                A dark synth rock track about toxic relationships as a game you never agreed to
+                play. Set in a paranoid dystopian world of surveillance, manipulation and control.
+              </p>
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                {[
+                  { label: "SPOTIFY", href: "https://spotify.com/stagefright" },
+                  { label: "APPLE MUSIC", href: "#" },
+                  { label: "YOUTUBE", href: "https://youtube.com/@stagefr1ghtband?si=P0A80wztXzcGVNx5" },
+                ].map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[11px] tracking-[0.25em] uppercase px-4 py-2 border border-sf-violet/60 text-foreground hover:border-sf-pink hover:text-sf-pink transition-colors"
+                  >
+                    ▸ {s.label}
+                  </a>
+                ))}
               </div>
             </div>
-          </Card>
+          </article>
+
+          <blockquote className="mt-16 text-center">
+            <p className="font-arcade text-base md:text-2xl text-sf-cyan glow-text-cyan leading-relaxed max-w-3xl mx-auto">
+              "i'm too cool to be your game night"
+            </p>
+            <p className="mt-4 font-mono text-[10px] tracking-[0.35em] text-foreground/50 uppercase">
+              — GAME NIGHT, 2025
+            </p>
+          </blockquote>
         </div>
       </section>
 
