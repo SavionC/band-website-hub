@@ -1,6 +1,6 @@
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
-import coverArt from "@/assets/band-photo.jpg";
+import coverArt from "@/assets/arcadestand.jpg";
 
 const Music = () => {
   return (
@@ -11,7 +11,7 @@ const Music = () => {
         <div className="container-custom">
           <p className="font-mono text-xs tracking-[0.3em] text-sf-pink mb-4 animate-fade-in">◆ TRACK LOADED ◆</p>
           <h1 className="font-arcade text-xl md:text-3xl text-sf-violet glow-violet cursor-blink animate-fade-in">
-            NOW PLAYING
+            COMING SOON
           </h1>
         </div>
       </section>
@@ -33,10 +33,10 @@ const Music = () => {
                 GAME NIGHT
               </h2>
               <p className="font-mono text-sm tracking-[0.2em] uppercase text-sf-violet">
-                STAGE FRIGHT · 04 . 07 . 2025
+                STAGE FRIGHT · 04 . 07 . 2026
               </p>
               <p className="font-body text-foreground/80 leading-relaxed">
-                A dark synth rock track about toxic relationships as a game you never agreed to
+                An electronic synth rock track about toxic relationships as a game you never agreed to
                 play. Set in a paranoid dystopian world of surveillance, manipulation and control.
               </p>
 
@@ -65,7 +65,7 @@ const Music = () => {
               "i'm too cool to be your game night"
             </p>
             <p className="mt-4 font-mono text-[10px] tracking-[0.35em] text-foreground/50 uppercase">
-              — GAME NIGHT, 2025
+              — GAME NIGHT, 2026
             </p>
           </blockquote>
         </div>

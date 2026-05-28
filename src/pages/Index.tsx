@@ -89,7 +89,7 @@ const Index = () => {
           <div className="flex items-center justify-center gap-6 pt-12 font-mono text-[11px] tracking-[0.3em] uppercase">
             <span className="text-foreground/60">HI-SCORE</span>
             <span className="text-sf-amber tabular-nums text-base" style={{ textShadow: "0 0 12px hsl(var(--sf-amber) / 0.7)" }}>
-              999999
+              04.07.26
             </span>
             <span className="text-sf-pink text-base tracking-wider">♥ ♥ ♥</span>
           </div>
@@ -100,7 +100,7 @@ const Index = () => {
       <section className="section-padding relative">
         <div className="container-custom max-w-5xl">
           <h2 className="font-arcade text-xl md:text-3xl text-sf-violet glow-violet mb-12 cursor-blink animate-fade-in">
-            NOW PLAYING
+            COMING SOON
           </h2>
 
           <article className="bg-card border border-sf-violet/40 glow-border-violet p-6 md:p-10 grid md:grid-cols-[1fr_1.2fr] gap-8 md:gap-10 items-center animate-fade-in">
@@ -119,10 +119,10 @@ const Index = () => {
                 GAME NIGHT
               </h3>
               <p className="font-mono text-sm tracking-[0.2em] uppercase text-sf-violet">
-                STAGE FRIGHT · 04 . 07 . 2025
+                STAGE FRIGHT · 04 . 07 . 2026
               </p>
               <p className="font-body text-foreground/80 leading-relaxed">
-                A dark synth rock track about toxic relationships as a game you never agreed to
+                An electronic synth rock track about toxic relationships as a game you never agreed to
                 play. Set in a paranoid dystopian world of surveillance, manipulation and control.
               </p>
 
@@ -158,7 +158,7 @@ const Index = () => {
       <section className="section-padding bg-card/40 border-y border-sf-violet/20">
         <div className="container-custom max-w-4xl">
           <h2 className="font-arcade text-xl md:text-3xl text-sf-violet glow-violet mb-10 animate-fade-in">
-            SELECT YOUR PLAYER
+            WHO ARE THESE GUYS?
           </h2>
 
           <div className="space-y-5 font-body text-foreground/80 text-base md:text-lg leading-relaxed animate-fade-in">
