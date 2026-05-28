@@ -2,152 +2,77 @@ import { useState } from "react";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Play, X } from "lucide-react";
 
 const galleryImages = [
   { src: "/placeholder.svg", alt: "Stage Fright performing live", caption: "Live at Mumbai" },
   { src: "/placeholder.svg", alt: "Band rehearsal session", caption: "Rehearsal Vibes" },
-  { src: "/placeholder.svg", alt: "Crowd at concert", caption: "The Crowd Goes Wild" },
-  { src: "/placeholder.svg", alt: "Backstage moments", caption: "Behind the Scenes" },
-  { src: "/placeholder.svg", alt: "Stage setup", caption: "Setting the Stage" },
+  { src: "/placeholder.svg", alt: "Crowd at concert", caption: "The Crowd" },
+  { src: "/placeholder.svg", alt: "Backstage moments", caption: "Backstage" },
+  { src: "/placeholder.svg", alt: "Stage setup", caption: "Setup" },
   { src: "/placeholder.svg", alt: "Band group photo", caption: "The Family" },
   { src: "/placeholder.svg", alt: "Solo performance", caption: "In the Zone" },
-  { src: "/placeholder.svg", alt: "Acoustic set", caption: "Unplugged Session" },
-];
-
-const videoItems = [
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Stage Fright - Live Performance",
-    thumbnail: "/placeholder.svg",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Behind the Scenes",
-    thumbnail: "/placeholder.svg",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Acoustic Session",
-    thumbnail: "/placeholder.svg",
-  },
+  { src: "/placeholder.svg", alt: "Acoustic set", caption: "Unplugged" },
 ];
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<"photos" | "videos">("photos");
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background crt-vignette">
       <Navigation />
 
-      {/* Hero */}
-      <section className="pt-32 pb-16 section-padding text-center relative pattern-overlay">
+      <section className="pt-32 pb-12">
         <div className="container-custom">
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-gradient-maroon glow-text-maroon mb-6 animate-fade-in">
-            Gallery
+          <p className="font-mono text-xs tracking-[0.3em] text-sf-pink mb-4 animate-fade-in">◆ ARCHIVE ◆</p>
+          <h1 className="font-arcade text-xl md:text-3xl text-sf-violet glow-violet animate-fade-in">
+            GAME FOOTAGE
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in">
-            Moments captured from our live performances, rehearsals, and behind the scenes
-          </p>
         </div>
       </section>
 
-      {/* Tab Switcher */}
-      <div className="container-custom flex justify-center gap-4 mb-12">
-        <button
-          onClick={() => setActiveTab("photos")}
-          className={`px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 ${
-            activeTab === "photos"
-              ? "bg-gradient-to-r from-maroon-bright to-maroon-neon text-foreground shadow-[0_0_20px_hsl(var(--maroon-bright)/0.5)]"
-              : "border border-border text-muted-foreground hover:text-foreground hover:border-maroon-bright"
-          }`}
-        >
-          Photos
-        </button>
-        <button
-          onClick={() => setActiveTab("videos")}
-          className={`px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 ${
-            activeTab === "videos"
-              ? "bg-gradient-to-r from-maroon-bright to-maroon-neon text-foreground shadow-[0_0_20px_hsl(var(--maroon-bright)/0.5)]"
-              : "border border-border text-muted-foreground hover:text-foreground hover:border-maroon-bright"
-          }`}
-        >
-          Videos
-        </button>
-      </div>
-
-      {/* Photos Grid */}
-      {activeTab === "photos" && (
-        <section className="container-custom pb-20">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                onClick={() => setSelectedImage(index)}
-                className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer border border-border hover:border-maroon-bright transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--maroon-bright)/0.3)]"
-                style={{ animationDelay: `${index * 0.1}s` }}
+      <section className="pb-24">
+        <div className="container-custom">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            {galleryImages.map((image, i) => (
+              <button
+                key={i}
+                onClick={() => setSelectedImage(i)}
+                className="group relative aspect-square overflow-hidden border border-sf-violet/20 hover:border-sf-violet transition-colors duration-300 animate-fade-in text-left"
+                style={{ animationDelay: `${i * 0.04}s` }}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
+                  className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <p className="text-foreground font-semibold text-sm">{image.caption}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                  <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-sf-pink">
+                    {image.caption}
+                  </p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
-          {/* Lightbox */}
           <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
-            <DialogContent className="max-w-4xl bg-background/95 backdrop-blur-md border-border p-2">
+            <DialogContent className="max-w-4xl bg-card border border-sf-violet/50 p-2 rounded-none">
               {selectedImage !== null && (
-                <div className="relative">
+                <div>
                   <img
                     src={galleryImages[selectedImage].src}
                     alt={galleryImages[selectedImage].alt}
-                    className="w-full h-auto rounded-lg"
+                    className="w-full h-auto"
                   />
-                  <p className="text-center text-foreground mt-4 font-semibold text-lg">
+                  <p className="text-center font-mono text-xs tracking-[0.25em] uppercase text-sf-pink mt-4 mb-2">
                     {galleryImages[selectedImage].caption}
                   </p>
                 </div>
               )}
             </DialogContent>
           </Dialog>
-        </section>
-      )}
-
-      {/* Videos Grid */}
-      {activeTab === "videos" && (
-        <section className="container-custom pb-20">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {videoItems.map((video, index) => (
-              <div
-                key={index}
-                className="group relative rounded-lg overflow-hidden border border-border hover:border-maroon-bright transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--maroon-bright)/0.3)]"
-              >
-                <div className="aspect-video">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${video.id}`}
-                    title={video.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-4 bg-card">
-                  <h3 className="text-foreground font-semibold">{video.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       <Footer />
     </div>
