@@ -14,13 +14,11 @@ interface Member {
 
 const members: Member[] = [
   { name: "Nadia Peters",      role: "VOCALS",  weapon: "Soul-Piercing Mic",       stats: { energy: 92, chaos: 78, soul: 96 }, instagram: "https://www.instagram.com/mafia.nadia" },
-  { name: "Joanna Fernandes",  role: "VOCALS",  weapon: "Velvet Howl",             stats: { energy: 88, chaos: 70, soul: 95 }, instagram: "https://www.instagram.com/jojieberryy" },
   { name: "Om Deshmukh",       role: "VOCALS",  weapon: "Tower Speaker",           stats: { energy: 95, chaos: 82, soul: 90 }, instagram: "https://www.instagram.com/omsmusicdiaries" },
   { name: "Rayan Castelino",   role: "GUITAR",  weapon: "Fuzz Cannon",             stats: { energy: 90, chaos: 88, soul: 84 }, instagram: "https://www.instagram.com/rayancastelino" },
   { name: "Savion Coutinho",   role: "GUITAR",  weapon: "Switchblade Strat",       stats: { energy: 87, chaos: 85, soul: 86 }, instagram: "https://www.instagram.com/savion.02/" },
   { name: "George Faria",      role: "BASS",    weapon: "Sub-Bass Pulse",          stats: { energy: 84, chaos: 72, soul: 92 }, instagram: "https://www.instagram.com/georgefariamusic" },
   { name: "Rickson Castelino", role: "KEYS",    weapon: "Synth Grid",              stats: { energy: 80, chaos: 76, soul: 94 }, instagram: "https://www.instagram.com/rickcastelino" },
-  { name: "Nathan Nainan",     role: "DRUMS",   weapon: "Double-Kick Engine",      stats: { energy: 99, chaos: 90, soul: 82 }, instagram: "https://www.instagram.com/nat3drums" },
 ];
 
 const StatBar = ({ label, value }: { label: string; value: number }) => (
