@@ -2,145 +2,156 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design system — Retro 80s/90s Arcade with Neon vibe. All colors HSL. */
+/* Stage Fright — Dark vintage arcade cabinet, neon-lit room. All colors HSL. */
 
 @layer base {
   :root {
-    --background: 250 30% 5%;
-    --foreground: 0 0% 98%;
+    /* Core surfaces */
+    --background: 276 33% 5%;            /* #0d0810 */
+    --foreground: 270 100% 95%;          /* #f0e6ff */
 
-    --card: 260 40% 9%;
-    --card-foreground: 0 0% 98%;
+    --card: 287 50% 8%;                  /* #1a0a1e */
+    --card-foreground: 270 100% 95%;
 
-    --popover: 260 40% 9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 287 50% 8%;
+    --popover-foreground: 270 100% 95%;
 
-    --primary: 320 100% 60%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 349 100% 59%;             /* #ff2d55 hot pink */
+    --primary-foreground: 276 33% 5%;
 
-    --secondary: 260 40% 14%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 287 50% 10%;
+    --secondary-foreground: 270 100% 95%;
 
-    --muted: 260 30% 18%;
-    --muted-foreground: 280 20% 75%;
+    --muted: 280 15% 14%;
+    --muted-foreground: 268 12% 55%;     /* #6b5f7a-ish, slightly brighter */
 
-    --accent: 180 100% 55%;
-    --accent-foreground: 0 0% 5%;
+    --accent: 282 100% 65%;              /* #c44dff violet */
+    --accent-foreground: 276 33% 5%;
 
-    --destructive: 0 95% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 270 100% 95%;
 
-    --border: 280 60% 25%;
-    --input: 280 60% 18%;
-    --ring: 320 100% 60%;
+    --border: 282 100% 65% / 0.35;       /* violet @ low alpha (used as hsl() so keep solid below) */
+    --border-solid: 282 100% 20%;
+    --border: 282 100% 22%;
+    --input: 287 50% 12%;
+    --ring: 282 100% 65%;
 
-    --radius: 0.25rem;
+    --radius: 0.125rem;                  /* 2px — sharp corners */
 
-    /* Legacy maroon tokens kept for other pages */
-    --maroon-deep: 320 90% 35%;
-    --maroon-rich: 320 95% 45%;
-    --maroon-bright: 320 100% 60%;
-    --maroon-neon: 180 100% 55%;
-    --gold-indian: 50 100% 60%;
+    /* Stage Fright accents */
+    --sf-violet: 282 100% 65%;           /* #c44dff — borders, glows */
+    --sf-pink:   349 100% 59%;           /* #ff2d55 — CTAs, song title */
+    --sf-red:    6 64% 46%;              /* #c0392b — trim only */
+    --sf-cyan:   184 100% 42%;           /* #00c8d4 — glitch only */
+    --sf-amber:  44 100% 60%;            /* HI-SCORE digit */
+    --sf-text:   270 100% 95%;
+    --sf-text-muted: 268 12% 55%;
 
-    /* Arcade neon palette */
-    --neon-pink: 320 100% 60%;
-    --neon-magenta: 300 100% 55%;
-    --neon-cyan: 180 100% 55%;
-    --neon-purple: 270 100% 65%;
-    --neon-yellow: 55 100% 60%;
-    --neon-green: 140 100% 55%;
+    /* Legacy aliases (remapped so older components inherit the new palette) */
+    --maroon-deep: 282 100% 35%;
+    --maroon-rich: 282 100% 50%;
+    --maroon-bright: 282 100% 65%;
+    --maroon-neon: 349 100% 59%;
+    --gold-indian: 44 100% 60%;
+
+    --neon-pink: 349 100% 59%;
+    --neon-magenta: 320 100% 60%;
+    --neon-cyan: 184 100% 42%;
+    --neon-purple: 282 100% 65%;
+    --neon-yellow: 44 100% 60%;
+    --neon-green: 140 80% 50%;
     --neon-blue: 220 100% 60%;
 
-    /* Gradients */
-    --gradient-dark: linear-gradient(180deg, hsl(250 30% 5%) 0%, hsl(270 50% 10%) 100%);
-    --gradient-maroon: linear-gradient(135deg, hsl(320 100% 60%) 0%, hsl(270 100% 65%) 100%);
-    --gradient-neon: linear-gradient(135deg, hsl(320 100% 60%) 0%, hsl(180 100% 55%) 100%);
-    --gradient-synthwave: linear-gradient(180deg, hsl(270 80% 15%) 0%, hsl(320 100% 50%) 60%, hsl(50 100% 60%) 100%);
-    --gradient-overlay: linear-gradient(180deg, hsl(250 30% 5% / 0.3) 0%, hsl(250 30% 5% / 0.9) 100%);
-
-    /* Effects */
-    --shadow-glow: 0 0 40px hsl(320 100% 60% / 0.5);
-    --shadow-glow-intense: 0 0 80px hsl(320 100% 60% / 0.8);
-    --shadow-neon: 0 0 30px hsl(180 100% 55% / 0.6);
-    --shadow-card: 0 0 30px hsl(320 100% 50% / 0.25), inset 0 0 20px hsl(270 100% 50% / 0.1);
+    /* Shadows / glows */
+    --shadow-violet: 0 0 24px hsl(var(--sf-violet) / 0.55), 0 0 60px hsl(var(--sf-violet) / 0.25);
+    --shadow-pink:   0 0 24px hsl(var(--sf-pink) / 0.55),   0 0 60px hsl(var(--sf-pink) / 0.25);
+    --shadow-cyan:   0 0 24px hsl(var(--sf-cyan) / 0.6);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 287 50% 8%;
+    --sidebar-foreground: 270 100% 95%;
+    --sidebar-primary: 349 100% 59%;
+    --sidebar-primary-foreground: 276 33% 5%;
+    --sidebar-accent: 287 50% 12%;
+    --sidebar-accent-foreground: 270 100% 95%;
+    --sidebar-border: 282 100% 22%;
+    --sidebar-ring: 282 100% 65%;
   }
 
   .dark {
-    --background: 250 30% 5%;
-    --foreground: 0 0% 98%;
+    --background: 276 33% 5%;
+    --foreground: 270 100% 95%;
   }
 }
 
 @layer utilities {
-  .text-gradient-maroon {
-    @apply bg-gradient-to-r from-[hsl(var(--neon-pink))] via-[hsl(var(--neon-magenta))] to-[hsl(var(--neon-cyan))] bg-clip-text text-transparent;
-  }
+  /* Typography helpers */
+  .font-arcade { font-family: 'Press Start 2P', monospace; }       /* logo + section headings */
+  .font-mono   { font-family: 'Share Tech Mono', monospace; letter-spacing: 0.08em; }
+  .font-retro  { font-family: 'Share Tech Mono', monospace; letter-spacing: 0.08em; }
+  .font-body   { font-family: 'Inter', system-ui, sans-serif; }
+  .font-orbitron { font-family: 'Inter', system-ui, sans-serif; }
 
+  /* Gradient text — pink → violet */
+  .text-gradient-sf {
+    @apply bg-gradient-to-r from-[hsl(var(--sf-pink))] via-[hsl(var(--sf-violet))] to-[hsl(var(--sf-violet))] bg-clip-text text-transparent;
+  }
+  .text-gradient-maroon { @apply text-gradient-sf; }
   .text-gradient-gold {
-    @apply bg-gradient-to-r from-[hsl(var(--neon-yellow))] to-[hsl(var(--neon-pink))] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[hsl(var(--sf-amber))] to-[hsl(var(--sf-pink))] bg-clip-text text-transparent;
   }
+  .text-gradient-neon { @apply text-gradient-sf; }
 
-  .text-gradient-neon {
-    @apply bg-gradient-to-r from-[hsl(var(--neon-cyan))] via-[hsl(var(--neon-purple))] to-[hsl(var(--neon-pink))] bg-clip-text text-transparent;
-  }
-
-  .glow-text-maroon {
+  /* Glows */
+  .glow-pink {
     text-shadow:
-      0 0 10px hsl(var(--neon-pink) / 0.9),
-      0 0 25px hsl(var(--neon-pink) / 0.7),
-      0 0 50px hsl(var(--neon-magenta) / 0.5),
-      0 0 80px hsl(var(--neon-purple) / 0.3);
+      0 0 8px hsl(var(--sf-pink) / 0.9),
+      0 0 20px hsl(var(--sf-pink) / 0.6),
+      0 0 40px hsl(var(--sf-violet) / 0.4);
   }
-
+  .glow-violet {
+    text-shadow:
+      0 0 8px hsl(var(--sf-violet) / 0.9),
+      0 0 20px hsl(var(--sf-violet) / 0.6),
+      0 0 40px hsl(var(--sf-violet) / 0.35);
+  }
+  .glow-text-maroon { @apply glow-pink; }
   .glow-text-cyan {
     text-shadow:
-      0 0 10px hsl(var(--neon-cyan) / 0.9),
-      0 0 25px hsl(var(--neon-cyan) / 0.7),
-      0 0 50px hsl(var(--neon-cyan) / 0.4);
+      0 0 6px hsl(var(--sf-cyan) / 0.9),
+      0 0 18px hsl(var(--sf-cyan) / 0.5);
   }
 
-  .glow-border-maroon {
+  .glow-border-violet {
     box-shadow:
-      0 0 15px hsl(var(--neon-pink) / 0.5),
-      0 0 30px hsl(var(--neon-pink) / 0.25),
-      inset 0 0 15px hsl(var(--neon-magenta) / 0.15);
+      0 0 14px hsl(var(--sf-violet) / 0.45),
+      0 0 30px hsl(var(--sf-violet) / 0.2),
+      inset 0 0 12px hsl(var(--sf-violet) / 0.1);
   }
-
+  .glow-border-maroon { @apply glow-border-violet; }
   .glow-border-cyan {
     box-shadow:
-      0 0 15px hsl(var(--neon-cyan) / 0.5),
-      inset 0 0 15px hsl(var(--neon-cyan) / 0.15);
+      0 0 12px hsl(var(--sf-cyan) / 0.4),
+      inset 0 0 10px hsl(var(--sf-cyan) / 0.1);
   }
 
   .section-padding {
-    @apply py-20 md:py-32 px-6 md:px-12 lg:px-16;
+    @apply py-20 md:py-28 px-6 md:px-12 lg:px-16;
   }
-
   .container-custom {
     @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
   }
 
-  /* Arcade scanlines overlay */
+  /* CRT scanlines */
   .scanlines {
     background-image: repeating-linear-gradient(
       to bottom,
       transparent 0px,
       transparent 2px,
-      hsl(0 0% 0% / 0.25) 3px,
-      hsl(0 0% 0% / 0.25) 4px
+      hsl(0 0% 0% / 0.22) 3px,
+      hsl(0 0% 0% / 0.22) 4px
     );
   }
 
@@ -150,81 +161,92 @@
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(ellipse at center, transparent 55%, hsl(0 0% 0% / 0.55) 100%);
+    background: radial-gradient(ellipse at center, transparent 55%, hsl(0 0% 0% / 0.6) 100%);
     z-index: 60;
   }
 
-  /* Retro pixel grid background */
+  /* Subtle pixel grid */
   .pattern-overlay {
     background-image:
-      linear-gradient(hsl(var(--neon-cyan) / 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--neon-cyan) / 0.08) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(hsl(var(--sf-violet) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--sf-violet) / 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 
-  /* Synthwave perspective grid floor */
+  /* 80s perspective grid floor — violet, low opacity */
   .grid-floor {
     background-image:
-      linear-gradient(hsl(var(--neon-pink) / 0.6) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--neon-pink) / 0.6) 1px, transparent 1px);
+      linear-gradient(hsl(var(--sf-violet) / 0.45) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--sf-violet) / 0.45) 1px, transparent 1px);
     background-size: 60px 60px;
     transform: perspective(500px) rotateX(60deg);
     transform-origin: center top;
     mask-image: linear-gradient(to bottom, hsl(0 0% 0%) 0%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, hsl(0 0% 0%) 0%, transparent 100%);
-    animation: grid-scroll 12s linear infinite;
+    animation: grid-scroll 14s linear infinite;
+    opacity: 0.55;
   }
-
   @keyframes grid-scroll {
     from { background-position: 0 0; }
-    to { background-position: 0 60px; }
+    to   { background-position: 0 60px; }
   }
 
-  /* Flicker animation */
-  @keyframes neon-flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-      opacity: 1;
-      filter: drop-shadow(0 0 8px hsl(var(--neon-pink) / 0.9));
+  /* Blinking cursor */
+  .cursor-blink::after {
+    content: "_";
+    margin-left: 0.25rem;
+    color: hsl(var(--sf-pink));
+    animation: cursor-blink 1s steps(1) infinite;
+  }
+  @keyframes cursor-blink {
+    50% { opacity: 0; }
+  }
+
+  /* Subtle glitch on "STAGE FRIGHT" — fires every ~5s */
+  @keyframes sf-glitch {
+    0%, 92%, 100% {
+      transform: translate(0, 0);
+      text-shadow:
+        0 0 8px hsl(var(--sf-pink) / 0.9),
+        0 0 24px hsl(var(--sf-violet) / 0.55);
     }
-    20%, 24%, 55% { opacity: 0.85; filter: drop-shadow(0 0 2px hsl(var(--neon-pink) / 0.4)); }
+    93%  { transform: translate(-2px, 0); text-shadow: 2px 0 hsl(var(--sf-cyan)), -2px 0 hsl(var(--sf-pink)); }
+    94%  { transform: translate(2px, 0);  text-shadow: -2px 0 hsl(var(--sf-cyan)), 2px 0 hsl(var(--sf-pink)); }
+    95%  { transform: translate(-1px, 1px); text-shadow: 1px -1px hsl(var(--sf-cyan)), -1px 1px hsl(var(--sf-pink)); }
+    96%  { transform: translate(1px, -1px); text-shadow: -1px 1px hsl(var(--sf-cyan)), 1px -1px hsl(var(--sf-pink)); }
+    97%  { transform: translate(0, 0); }
   }
-  .neon-flicker { animation: neon-flicker 4s infinite; }
+  .glitch-text { animation: sf-glitch 5s infinite; }
 
-  /* Marquee */
+  /* Subtle drifting pixel particles */
+  @keyframes pixel-drift {
+    from { transform: translateY(0); opacity: 0; }
+    10%, 90% { opacity: 1; }
+    to   { transform: translateY(-120vh); opacity: 0; }
+  }
+
+  /* Marquee (kept) */
   @keyframes marquee {
-    from { transform: translateX(0%); }
-    to { transform: translateX(-50%); }
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
   }
-  .marquee-track { animation: marquee 25s linear infinite; }
-
-  .mandala-accent::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.05;
-    background-image: radial-gradient(circle at center, hsl(var(--neon-cyan)) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-  }
-
-  .font-arcade { font-family: 'Press Start 2P', monospace; }
-  .font-retro { font-family: 'VT323', monospace; }
-  .font-orbitron { font-family: 'Orbitron', sans-serif; }
+  .marquee-track { animation: marquee 30s linear infinite; }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  * { @apply border-border; }
+
+  html { scroll-behavior: smooth; }
 
   body {
     @apply bg-background text-foreground;
-    background-image:
-      radial-gradient(ellipse at top, hsl(270 80% 12% / 0.8), transparent 60%),
-      radial-gradient(ellipse at bottom, hsl(320 80% 15% / 0.5), transparent 60%);
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: hsl(var(--background));
   }
 
-  /* Global subtle scanline overlay for arcade feel */
+  h1, h2, h3, h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
+
+  /* Global subtle scanline overlay */
   body::before {
     content: "";
     position: fixed;
@@ -235,9 +257,15 @@
       to bottom,
       transparent 0px,
       transparent 2px,
-      hsl(0 0% 0% / 0.18) 3px,
-      hsl(0 0% 0% / 0.18) 4px
+      hsl(0 0% 0% / 0.16) 3px,
+      hsl(0 0% 0% / 0.16) 4px
     );
     mix-blend-mode: multiply;
+  }
+
+  /* Focus ring — violet glow */
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--sf-violet)), 0 0 18px hsl(var(--sf-violet) / 0.5);
   }
 }
