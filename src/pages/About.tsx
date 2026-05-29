@@ -60,6 +60,40 @@ const About = () => {
         </div>
       </section>
 
+      {/* Real bio — for press & bookings */}
+      <section className="pb-12">
+        <div className="container-custom max-w-4xl">
+          <article className="bg-card border-l-2 border-sf-pink border-y border-r border-y-sf-violet/30 border-r-sf-violet/30 p-6 md:p-10 animate-fade-in">
+            <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-sf-violet mb-4">
+              ▸ WHO WE ACTUALLY ARE
+            </p>
+            <h2 className="font-arcade text-base md:text-xl text-foreground glow-pink mb-6 leading-snug">
+              STAGE FRIGHT — MUMBAI
+            </h2>
+            <div className="space-y-4 font-body text-foreground/80 leading-relaxed text-[15px] md:text-base">
+              <p>
+                Stage Fright is a six-piece dark synth-rock band out of Mumbai, formed in 2024.
+                Built around twin vocalists Nadia Peters and Om Deshmukh, the band fuses gritty
+                guitar riffs, pulsing synths and arena-ready hooks into a sound that's equal parts
+                neon-lit dancefloor and basement venue.
+              </p>
+              <p>
+                Their debut single <span className="text-sf-pink">"Game Night"</span> — out July 4,
+                2026 — is a paranoid, dystopian anthem about toxic relationships disguised as a
+                game you never agreed to play. It marks the first chapter of a wider universe the
+                band is building across music, visuals and live shows.
+              </p>
+              <p className="text-foreground/60 text-sm">
+                For press, bookings & collaborations →{" "}
+                <a href="mailto:teamstagefright@gmail.com" className="text-sf-pink hover:text-sf-violet underline underline-offset-4">
+                  teamstagefright@gmail.com
+                </a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section className="section-padding pt-8">
         <div className="container-custom">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
