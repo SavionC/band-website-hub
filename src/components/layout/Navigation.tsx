@@ -42,8 +42,9 @@ const Navigation = () => {
             <img
               src={logoNeon}
               alt="Stage Fright logo"
-              className="h-9 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_14px_hsl(var(--sf-violet)/0.7)]"
+              className="h-11 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_22px_hsl(var(--sf-violet)/0.95)]"
             />
+
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
