@@ -145,6 +145,30 @@ const Contact = () => {
               <p className="text-foreground/85">+91 98672 91626</p>
             </a>
           </div>
+
+          {/* EPK / Press Kit */}
+          <div className="mt-6 bg-card border-l-2 border-sf-pink border-y border-r border-y-sf-violet/30 border-r-sf-violet/30 p-6 md:p-8 animate-fade-in">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+              <div>
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-sf-violet mb-2">
+                  ▸ PRESS & PROMOTERS
+                </p>
+                <h3 className="font-arcade text-sm md:text-base text-foreground glow-pink mb-2">
+                  EPK / PRESS KIT
+                </h3>
+                <p className="font-body text-foreground/70 text-sm leading-relaxed max-w-md">
+                  Hi-res photos, band bio, tech rider & stage plot — packaged for press,
+                  promoters and venues.
+                </p>
+              </div>
+              <a
+                href="mailto:teamstagefright@gmail.com?subject=EPK%20Request%20%E2%80%94%20Stage%20Fright&body=Hi%20team%2C%0A%0APlease%20send%20over%20the%20latest%20Stage%20Fright%20EPK.%0A%0AName%3A%0AOrg%2FPublication%3A%0APurpose%3A%0A%0AThanks!"
+                className="shrink-0 text-center font-mono text-[11px] tracking-[0.3em] uppercase px-6 py-4 bg-sf-pink text-background hover:bg-sf-pink/90 transition-colors border border-sf-pink shadow-[0_0_24px_hsl(var(--sf-pink)/0.55)]"
+              >
+                ▶ REQUEST EPK
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

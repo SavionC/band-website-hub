@@ -40,22 +40,35 @@ const Music = () => {
                 play. Set in a paranoid dystopian world of surveillance, manipulation and control.
               </p>
 
-              <div className="flex flex-wrap gap-3 pt-2">
-                {[
-                  { label: "SPOTIFY", href: "https://spotify.com/stagefright" },
-                  { label: "APPLE MUSIC", href: "#" },
-                  { label: "YOUTUBE", href: "https://youtube.com/@stagefr1ghtband?si=P0A80wztXzcGVNx5" },
-                ].map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-[11px] tracking-[0.25em] uppercase px-4 py-2 border border-sf-violet/60 text-foreground hover:border-sf-pink hover:text-sf-pink transition-colors"
-                  >
-                    ▸ {s.label}
-                  </a>
-                ))}
+              <div className="pt-2 space-y-3">
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-foreground/55">
+                  ▸ PRE-SAVE / LISTEN
+                </p>
+                <a
+                  href="https://distrokid.com/hyperfollow/stagefright/game-night"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center font-mono text-xs tracking-[0.3em] uppercase px-6 py-4 bg-sf-pink text-background hover:bg-sf-pink/90 transition-colors border border-sf-pink shadow-[0_0_24px_hsl(var(--sf-pink)/0.55)]"
+                >
+                  ▶ PRE-SAVE GAME NIGHT
+                </a>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { label: "SPOTIFY", href: "https://open.spotify.com/artist/stagefright" },
+                    { label: "APPLE", href: "https://music.apple.com/artist/stagefright" },
+                    { label: "YOUTUBE", href: "https://youtube.com/@stagefr1ghtband?si=P0A80wztXzcGVNx5" },
+                  ].map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-center font-mono text-[10px] tracking-[0.25em] uppercase px-2 py-3 border border-sf-violet/60 text-foreground hover:border-sf-pink hover:text-sf-pink hover:bg-sf-pink/5 transition-colors"
+                    >
+                      ▸ {s.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </article>
