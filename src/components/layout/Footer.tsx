@@ -63,10 +63,25 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            <div className="font-body text-sm text-foreground/65 space-y-1">
-              <a href="mailto:teamstagefright@gmail.com" className="block hover:text-sf-violet transition-colors">teamstagefright@gmail.com</a>
-              <a href="https://wa.me/919867291626" target="_blank" rel="noopener noreferrer" className="block hover:text-sf-violet transition-colors">+91 98672 91626</a>
+            <div className="space-y-2 pt-1">
+              <a
+                href="mailto:teamstagefright@gmail.com"
+                className="block bg-background/60 border-l-2 border-sf-violet px-3 py-2 hover:border-sf-pink hover:bg-background/80 transition-colors group"
+              >
+                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-foreground/55 group-hover:text-sf-pink">▸ Manager</p>
+                <p className="font-body text-sm text-foreground break-all">teamstagefright@gmail.com</p>
+              </a>
+              <a
+                href="https://wa.me/919867291626"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-background/60 border-l-2 border-sf-violet px-3 py-2 hover:border-sf-pink hover:bg-background/80 transition-colors group"
+              >
+                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-foreground/55 group-hover:text-sf-pink">▸ Bookings</p>
+                <p className="font-body text-sm text-foreground">+91 98672 91626</p>
+              </a>
             </div>
+
           </div>
         </div>
 
