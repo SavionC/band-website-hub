@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import { Instagram, Youtube, Music2 } from "lucide-react";
+import { Instagram, Youtube } from "lucide-react";
 import logoNeon from "@/assets/logo-neon.png";
 
 const Footer = () => {
   const socialLinks = [
     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/stagefr1ght" },
     { icon: Youtube, label: "YouTube", href: "https://youtube.com/@stagefr1ghtband?si=P0A80wztXzcGVNx5" },
-    { icon: Music2, label: "Spotify", href: "#" },
   ];
+
 
   const footerLinks = [
     { name: "HOME", path: "/" },
