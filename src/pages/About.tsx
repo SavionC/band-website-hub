@@ -1,6 +1,12 @@
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
-import memberPlaceholder from "@/assets/member-placeholder.jpg";
+import nadiaImg from "@/assets/nadia.jpg";
+import omImg from "@/assets/om.jpg";
+import ricksonImg  from "@/assets/rickson.jpg";
+import rayanImg  from "@/assets/rayan.jpg";
+import savionImg  from "@/assets/savion.jpg";
+import georgeImg  from "@/assets/george.jpg";
+
 
 type Role = "VOCALS" | "GUITAR" | "BASS" | "DRUMS" | "KEYS";
 
@@ -8,17 +14,18 @@ interface Member {
   name: string;
   role: Role;
   weapon: string;
+  photo: string;
   stats: { energy: number; chaos: number; soul: number };
   instagram: string;
 }
 
 const members: Member[] = [
-  { name: "Nadia Peters",      role: "VOCALS",  weapon: "Soul-Piercing Mic",       stats: { energy: 92, chaos: 78, soul: 96 }, instagram: "https://www.instagram.com/mafia.nadia" },
-  { name: "Om Deshmukh",       role: "VOCALS",  weapon: "Tower Speaker",           stats: { energy: 95, chaos: 82, soul: 90 }, instagram: "https://www.instagram.com/omsmusicdiaries" },
-  { name: "Rickson Castelino", role: "KEYS",    weapon: "Synth Grid",              stats: { energy: 80, chaos: 76, soul: 94 }, instagram: "https://www.instagram.com/rickcastelino" },
-  { name: "Rayan Castelino",   role: "GUITAR",  weapon: "Fuzz Cannon",             stats: { energy: 90, chaos: 88, soul: 84 }, instagram: "https://www.instagram.com/rayancastelino" },
-  { name: "Savion Coutinho",   role: "GUITAR",  weapon: "Switchblade Strat",       stats: { energy: 87, chaos: 85, soul: 86 }, instagram: "https://www.instagram.com/savion.02/" },
-  { name: "George Faria",      role: "BASS",    weapon: "Sub-Bass Pulse",          stats: { energy: 84, chaos: 72, soul: 92 }, instagram: "https://www.instagram.com/georgefariamusic" },
+  { name: "Nadia Peters",      role: "VOCALS",  photo: nadiaImg,   weapon: "Soul-Piercing Mic",  stats: { energy: 92, chaos: 78, soul: 96 }, instagram: "https://www.instagram.com/mafia.nadia" },
+  { name: "Om Deshmukh",       role: "VOCALS",  photo: omImg,      weapon: "Tower Speaker",      stats: { energy: 95, chaos: 82, soul: 90 }, instagram: "https://www.instagram.com/omsmusicdiaries" },
+  { name: "Rickson Castelino", role: "KEYS",    photo: ricksonImg, weapon: "Synth Grid",         stats: { energy: 80, chaos: 76, soul: 94 }, instagram: "https://www.instagram.com/rickcastelino" },
+  { name: "Rayan Castelino",   role: "GUITAR",  photo: rayanImg,   weapon: "Fuzz Cannon",        stats: { energy: 90, chaos: 88, soul: 84 }, instagram: "https://www.instagram.com/rayancastelino" },
+  { name: "Savion Coutinho",   role: "GUITAR",  photo: savionImg,  weapon: "Switchblade Strat",  stats: { energy: 87, chaos: 85, soul: 86 }, instagram: "https://www.instagram.com/savion.02/" },
+  { name: "George Faria",      role: "BASS",    photo: georgeImg,  weapon: "Sub-Bass Pulse",     stats: { energy: 84, chaos: 72, soul: 92 }, instagram: "https://www.instagram.com/georgefariamusic" },
 ];
 
 const StatBar = ({ label, value }: { label: string; value: number }) => (
@@ -67,7 +74,7 @@ const About = () => {
               >
                 <div className="relative aspect-[3/4] overflow-hidden border-b border-sf-violet/30">
                   <img
-                    src={memberPlaceholder}
+                    src={m.photo}
                     alt={m.name}
                     className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500"
                   />
