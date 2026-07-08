@@ -1,6 +1,6 @@
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
-import nadiaImg from "@/assets/nadia.jpg";
+import nadiaImg from "@/assets/member-placeholder.jpg";
 import omImg from "@/assets/om.jpg";
 import ricksonImg  from "@/assets/rickson.jpg";
 import rayanImg  from "@/assets/rayan.jpg";
