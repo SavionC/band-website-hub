@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/layout/Navigation";
@@ -7,11 +8,15 @@ import GamePopup from "@/components/GamePopup";
 import coverArt from "@/assets/arcadestand.jpg.jpeg";
 
 const Index = () => {
+  const [showMailingPopup, setShowMailingPopup] = useState(false);
   return (
     <div className="min-h-screen bg-background crt-vignette">
       <Navigation />
-      <MailingListPopup />
-      <GamePopup />
+      <GamePopup onClose={() => setShowMailingPopup(true)} />
+
+{showMailingPopup && (
+  <MailingListPopup />
+)}
 
       {/* ============ HERO ============ */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

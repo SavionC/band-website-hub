@@ -1,11 +1,11 @@
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
-import nadiaImg from "@/assets/member-placeholder.jpg";
-import omImg from "@/assets/member-placeholder.jpg";
-import ricksonImg  from "@/assets/member-placeholder.jpg";
-import rayanImg  from "@/assets/member-placeholder.jpg";
-import savionImg  from "@/assets/member-placeholder.jpg";
-import georgeImg  from "@/assets/member-placeholder.jpg";
+import nadiaImg from "@/assets/Nadia.jpg";
+import omImg from "@/assets/Om.jpg";
+import ricksonImg  from "@/assets/Rickson_photo.jpg";
+import rayanImg  from "@/assets/Rayan.jpg";
+import savionImg  from "@/assets/Savion.jpg";
+import georgeImg  from "@/assets/George.jpg";
 
 
 type Role = "VOCALS" | "GUITAR" | "BASS" | "DRUMS" | "KEYS";
@@ -112,7 +112,7 @@ const About = () => {
                     alt={m.name}
                     className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+                  {/*<div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" /> */}
                   <span className="absolute top-3 left-3 font-mono text-[10px] tracking-[0.3em] text-sf-cyan bg-background/70 border border-sf-cyan/40 px-2 py-1">
                     P{i + 1}
                   </span>

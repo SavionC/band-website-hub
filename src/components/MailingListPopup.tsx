@@ -14,17 +14,12 @@ const MailingListPopup = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    // Check if user has already subscribed or dismissed
-    const hasInteracted = localStorage.getItem("mailingListInteracted");
-    if (!hasInteracted) {
-      // Show popup after 10 seconds
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 10000);
-      return () => clearTimeout(timer);
-    }
-  }, []);
+  const hasInteracted = localStorage.getItem("mailingListInteracted");
 
+  if (!hasInteracted) {
+    setIsVisible(true);
+  }
+}, []);
   const handleClose = () => {
     setIsVisible(false);
     localStorage.setItem("mailingListInteracted", "true");
@@ -61,7 +56,8 @@ const MailingListPopup = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm animate-fade-in">
+    <div className="fixed top-0 left-0 w-screen h-screen z-[9999] bg-background/80 backdrop-blur-sm animate-fade-in">
+  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[95vw] max-w-md">
       <Card className="relative max-w-md w-full bg-card border-maroon-bright shadow-[0_0_40px_hsl(var(--maroon-bright)/0.3)] pattern-overlay">
         <Button
           variant="ghost"
@@ -112,6 +108,7 @@ const MailingListPopup = () => {
           </button>
         </div>
       </Card>
+      </div>
     </div>
   );
 };

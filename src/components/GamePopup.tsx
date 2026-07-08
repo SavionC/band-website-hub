@@ -9,8 +9,10 @@ interface LeaderboardEntry {
   player_name: string;
   time_seconds: number;
 }
-
-const GamePopup = () => {
+interface GamePopupProps {
+  onClose?: () => void;
+}
+const GamePopup = ({ onClose }: GamePopupProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showGame, setShowGame] = useState(false);
   const [hasWon, setHasWon] = useState(false);
@@ -21,10 +23,12 @@ const GamePopup = () => {
   const [showLeaderboard, setShowLeaderboard] = useState(false);
 
   useEffect(() => {
-    // Show popup after a short delay
-    const timer = setTimeout(() => setIsOpen(true), 1500);
-    return () => clearTimeout(timer);
-  }, []);
+  const timer = setTimeout(() => {
+    setIsOpen(true);
+  }, 1500);
+
+  return () => clearTimeout(timer);
+}, []);
 
   useEffect(() => {
     fetchLeaderboard();
@@ -58,10 +62,14 @@ const GamePopup = () => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 backdrop-blur-sm animate-fade-in">
+    <div className="fixed top-0 left-0 w-screen h-screen z-[9999] flex items-center justify-center bg-background/80 backdrop-blur-sm animate-fade-in">
       <div className="relative bg-card border border-maroon-bright/50 rounded-xl shadow-[0_0_40px_hsl(348,78%,45%,0.3)] max-w-md w-[95vw] max-h-[90vh] overflow-y-auto p-6">
         <button
-          onClick={() => setIsOpen(false)}
+  onClick={() => {
+setIsOpen(false);
+onClose?.();
+    onClose?.();
+  }}
           className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <X className="h-5 w-5" />
