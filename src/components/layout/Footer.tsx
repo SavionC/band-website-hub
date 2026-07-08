@@ -28,7 +28,7 @@ const Footer = () => {
           <div className="space-y-4">
             <img src={logoNeon} alt="Stage Fright" className="h-12 md:h-14 w-auto drop-shadow-[0_0_22px_hsl(var(--sf-violet)/0.9)]" />
             <p className="font-body text-sm text-foreground/75 leading-relaxed max-w-xs">
-              Dark synth rock from Mumbai. Debut single <span className="text-sf-pink">Game Night</span> — July 4.
+              Dark synth rock from Mumbai. Debut single <span className="text-sf-pink">Game Night</span> — July 11.
             </p>
           </div>
 

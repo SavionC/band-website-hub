@@ -78,7 +78,7 @@ const About = () => {
                 neon-lit dancefloor and basement venue.
               </p>
               <p>
-                Their debut single <span className="text-sf-pink">"Game Night"</span> — out July 4,
+                Their debut single <span className="text-sf-pink">"Game Night"</span> — out July 11,
                 2026 — is a paranoid, dystopian anthem about toxic relationships disguised as a
                 game you never agreed to play. It marks the first chapter of a wider universe the
                 band is building across music, visuals and live shows.

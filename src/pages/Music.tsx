@@ -33,7 +33,7 @@ const Music = () => {
                 GAME NIGHT
               </h2>
               <p className="font-mono text-sm tracking-[0.2em] uppercase text-sf-violet">
-                STAGE FRIGHT · 04 . 07 . 2026
+                STAGE FRIGHT · 11 . 07 . 2026
               </p>
               <p className="font-body text-foreground/80 leading-relaxed">
                 An electronic synth rock track about toxic relationships as a game you never agreed to
