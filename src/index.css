@@ -28,23 +28,23 @@
     --accent: 282 100% 65%;              /* #c44dff violet */
     --accent-foreground: 276 33% 5%;
 
-    --destructive: 0 80% 55%;
+    --destructive: 0 80% 55%;             
     --destructive-foreground: 270 100% 95%;
-
+    
     --border: 282 100% 65% / 0.35;       /* violet @ low alpha (used as hsl() so keep solid below) */
     --border-solid: 282 100% 20%;
     --border: 282 100% 22%;
     --input: 287 50% 12%;
     --ring: 282 100% 65%;
 
-    --radius: 0.125rem;                  /* 2px — sharp corners */
+    --radius: 0.125rem;                  /* 2px — sharp corners  */
 
     /* Stage Fright accents */
-    --sf-violet: 282 100% 65%;           /* #c44dff — borders, glows */
-    --sf-pink:   349 100% 59%;           /* #ff2d55 — CTAs, song title */
-    --sf-red:    6 64% 46%;              /* #c0392b — trim only */
-    --sf-cyan:   184 100% 42%;           /* #00c8d4 — glitch only */
-    --sf-amber:  44 100% 60%;            /* HI-SCORE digit */
+    --sf-violet: 282 100% 65%;           /* #c44dff — borders, glows         */
+    --sf-pink:   349 100% 59%;           /* #ff2d55 — CTAs, song title       */
+    --sf-red:    6   64%  46%;           /* #c0392b — trim only              */
+    --sf-cyan:   184 100% 42%;           /* #00c8d4 — glitch only            */
+    --sf-amber:  44 100% 60%;            /* HI-SCORE digit                   */
     --sf-text:   270 100% 95%;
     --sf-text-muted: 268 12% 55%;
 
@@ -244,7 +244,7 @@
     background-color: hsl(var(--background));
   }
 
-  h1, h2, h3, h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; } 
 
   /* Global subtle scanline overlay */
   body::before {

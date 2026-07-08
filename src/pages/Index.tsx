@@ -66,7 +66,7 @@ const Index = () => {
           </div>
 
           <p className="font-mono text-sm md:text-base tracking-[0.25em] text-sf-violet animate-fade-in">
-            DEBUT SINGLE — <span className="text-sf-pink">GAME NIGHT</span> — JULY 4
+            DEBUT SINGLE — <span className="text-sf-pink">GAME NIGHT</span> — JULY 11
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 animate-fade-in">

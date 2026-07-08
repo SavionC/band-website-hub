@@ -55,7 +55,7 @@ const About = () => {
             SELECT YOUR<br />PLAYER
           </h1>
           <p className="font-body text-foreground/70 max-w-2xl mt-6 text-lg animate-fade-in">
-            Eight musicians. One distorted signal. Pick a fighter — they all hit different.
+            Six musicians. One distorted signal. Pick a fighter — they all hit different.
           </p>
         </div>
       </section>
@@ -73,7 +73,7 @@ const About = () => {
             <div className="space-y-4 font-body text-foreground/80 leading-relaxed text-[15px] md:text-base">
               <p>
                 Stage Fright is a six-piece dark synth-rock band out of Mumbai, formed in 2024.
-                Built around twin vocalists Nadia Peters and Om Deshmukh, the band fuses gritty
+                Built around vocalists Nadia Peters and Om Deshmukh, the band fuses gritty
                 guitar riffs, pulsing synths and arena-ready hooks into a sound that's equal parts
                 neon-lit dancefloor and basement venue.
               </p>
