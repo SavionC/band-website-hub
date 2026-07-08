@@ -89,7 +89,7 @@ const Index = () => {
           <div className="flex items-center justify-center gap-6 pt-12 font-mono text-[11px] tracking-[0.3em] uppercase">
             <span className="text-foreground/60">HI-SCORE</span>
             <span className="text-sf-amber tabular-nums text-base" style={{ textShadow: "0 0 12px hsl(var(--sf-amber) / 0.7)" }}>
-              04.07.26
+              11.07.26
             </span>
             <span className="text-sf-pink text-base tracking-wider">♥ ♥ ♥</span>
           </div>
@@ -119,7 +119,7 @@ const Index = () => {
                 GAME NIGHT
               </h3>
               <p className="font-mono text-sm tracking-[0.2em] uppercase text-sf-violet">
-                STAGE FRIGHT · 04 . 07 . 2026
+                STAGE FRIGHT · 11 . 07 . 2026
               </p>
               <p className="font-body text-foreground/80 leading-relaxed">
                 An electronic synth rock track about toxic relationships as a game you never agreed to
